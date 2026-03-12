@@ -26,7 +26,6 @@
   "homepage": "https://github.com/robelkin/ai-training#readme",
   "description": "",
   "devDependencies": {
-    "concurrently": "^9.1.2",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
@@ -34,6 +33,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "concurrently": "^9.1.2",
     "express-validator": "^7.2.1"
   }
 }
