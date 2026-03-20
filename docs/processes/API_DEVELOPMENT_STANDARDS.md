@@ -1,36 +1,36 @@
-# API Development Standards and Type Safety Process
+# Standards de Développement API et Processus de Sûreté de Typage
 
-## Purpose
+## Objectif
 
-This process ensures all new API endpoints maintain type safety, validation, and documentation standards established during the comprehensive API validation implementation (completed Phase 1-6, achieving 35% coverage with 68/193 endpoints validated).
+Ce processus garantit que tous les nouveaux endpoints API maintiennent les standards de sûreté de typage, de validation et de documentation établis lors de l'implémentation complète de la validation API (Phase 1-6 terminées, atteignant 35% de couverture avec 68/193 endpoints validés).
 
-## When to Use This Process
+## Quand Utiliser ce Processus
 
-**ALWAYS use this process when:**
-- Creating new API endpoints
-- Modifying existing API endpoints (request/response structure changes)
-- Adding new route handlers or controllers
-- Updating API documentation
+**Utilisez TOUJOURS ce processus lorsque vous :**
+- Créez de nouveaux endpoints API
+- Modifiez des endpoints API existants (modifications de la structure requête/réponse)
+- Ajoutez de nouveaux gestionnaires de routes ou contrôleurs
+- Mettez à jour la documentation API
 
-**This process applies to:**
-- Backend API development
-- Frontend API client updates
-- API contract changes
-- Documentation updates
+**Ce processus s'applique à :**
+- Le développement d'API backend
+- Les mises à jour du client API frontend
+- Les modifications de contrat API
+- Les mises à jour de documentation
 
-## Required Standards for All API Endpoints
+## Standards Requis pour Tous les Endpoints API
 
-### 1. Type Safety Requirements
+### 1. Exigences de Sûreté de Typage
 
-**✅ REQUIRED:** Every new endpoint MUST include:
-- **Zod validation schemas** for request parameters, body, and responses
-- **TypeScript interfaces** derived from Zod schemas
-- **Runtime validation** using validation middleware
-- **Standardized response format**: `{ success: boolean, data?: any, message?: string }`
+**REQUIS :** Chaque nouvel endpoint DOIT inclure :
+- **Des schémas de validation Zod** pour les paramètres de requête, le corps et les réponses
+- **Des interfaces TypeScript** dérivées des schémas Zod
+- **Une validation à l'exécution** utilisant un middleware de validation
+- **Un format de réponse standardisé** : `{ success: boolean, data?: any, message?: string }`
 
-**Example schema pattern:**
+**Exemple de pattern de schéma :**
 ```typescript
-// In src/schemas/api.schemas.ts
+// Dans src/schemas/api.schemas.ts
 export const CreateItemParamsSchema = z.object({
   id: UUIDSchema
 });
@@ -47,9 +47,9 @@ export const CreateItemResponseSchema = z.object({
 });
 ```
 
-### 2. Validation Middleware Requirements
+### 2. Exigences du Middleware de Validation
 
-**✅ REQUIRED:** Apply validation middleware to all routes:
+**REQUIS :** Appliquez le middleware de validation à toutes les routes :
 ```typescript
 router.post('/:id/items',
   authenticateToken,
@@ -62,170 +62,170 @@ router.post('/:id/items',
 );
 ```
 
-### 3. Controller Standards
+### 3. Standards des Contrôleurs
 
-**✅ REQUIRED:** Controllers must return standardized format:
+**REQUIS :** Les contrôleurs doivent retourner un format standardisé :
 ```typescript
-// Success response
+// Réponse de succès
 return res.status(200).json({
   success: true,
   data: result
 });
 
-// Error response  
+// Réponse d'erreur
 return res.status(400).json({
   success: false,
-  error: "Validation failed",
-  message: "Request validation failed"
+  error: "Échec de la validation",
+  message: "La validation de la requête a échoué"
 });
 ```
 
-### 4. Testing Requirements
+### 4. Exigences de Tests
 
-**✅ REQUIRED:** Every endpoint must have:
-- **Parameter validation tests** (invalid UUIDs, missing required fields)
-- **Request body validation tests** (field lengths, data types, constraints)
-- **Response schema validation tests** using Zod schemas
-- **Authentication/authorization tests** where applicable
-- **Error scenario tests** (404, 400, 401, 403, 500 status codes)
+**REQUIS :** Chaque endpoint doit avoir :
+- **Des tests de validation des paramètres** (UUID invalides, champs requis manquants)
+- **Des tests de validation du corps de requête** (longueur des champs, types de données, contraintes)
+- **Des tests de validation du schéma de réponse** utilisant les schémas Zod
+- **Des tests d'authentification/autorisation** le cas échéant
+- **Des tests de scénarios d'erreur** (codes de statut 404, 400, 401, 403, 500)
 
-## Step-by-Step Implementation Process
+## Processus d'Implémentation Étape par Étape
 
-### Step 1: Design API Contract
-1. Define request/response structure
-2. Identify validation requirements
-3. Consider security implications
-4. Plan error scenarios
+### Étape 1 : Concevoir le Contrat API
+1. Définir la structure requête/réponse
+2. Identifier les exigences de validation
+3. Considérer les implications de sécurité
+4. Planifier les scénarios d'erreur
 
-### Step 2: Create Zod Schemas
-1. Add schemas to `/backend/src/schemas/api.schemas.ts`
-2. Follow existing naming conventions: `[Action][Resource][Type]Schema`
-3. Include comprehensive validation rules
-4. Add schemas to `APISchemas` export object
+### Étape 2 : Créer les Schémas Zod
+1. Ajouter les schémas dans `/backend/src/schemas/api.schemas.ts`
+2. Suivre les conventions de nommage existantes : `[Action][Ressource][Type]Schema`
+3. Inclure des règles de validation complètes
+4. Ajouter les schémas à l'objet d'export `APISchemas`
 
-### Step 3: Implement Route Handler
-1. Add route to appropriate router file
-2. Apply authentication middleware
-3. Apply validation middleware with request/response schemas
-4. Implement controller following standardized response format
+### Étape 3 : Implémenter le Gestionnaire de Route
+1. Ajouter la route au fichier routeur approprié
+2. Appliquer le middleware d'authentification
+3. Appliquer le middleware de validation avec les schémas requête/réponse
+4. Implémenter le contrôleur en suivant le format de réponse standardisé
 
-### Step 4: Write Comprehensive Tests
-1. Create test file following pattern: `/backend/src/__tests__/[domain]-[feature].test.ts`
-2. Include all validation scenarios
-3. Test authentication and authorization
-4. Verify error handling
+### Étape 4 : Écrire des Tests Complets
+1. Créer un fichier de test suivant le pattern : `/backend/src/__tests__/[domaine]-[fonctionnalite].test.ts`
+2. Inclure tous les scénarios de validation
+3. Tester l'authentification et l'autorisation
+4. Vérifier la gestion des erreurs
 
-### Step 5: Update Documentation
-1. Run documentation generation: `npm run generate:docs`
-2. Verify endpoint appears in generated documentation
-3. Update any relevant evergreen documentation
+### Étape 5 : Mettre à Jour la Documentation
+1. Exécuter la génération de documentation : `npm run generate:docs`
+2. Vérifier que l'endpoint apparaît dans la documentation générée
+3. Mettre à jour toute documentation evergreen pertinente
 
-## Automation Tools Available
+## Outils d'Automatisation Disponibles
 
-### For New Endpoint Creation
+### Pour la Création de Nouveaux Endpoints
 ```bash
-npm run add:endpoint  # Interactive endpoint generator with validation boilerplate
+npm run add:endpoint  # Générateur interactif d'endpoint avec boilerplate de validation
 ```
 
-### For Validation and Monitoring
+### Pour la Validation et le Suivi
 ```bash
-npm run validate:schemas      # Validate all Zod schemas
-npm run analyze:api-coverage  # Check validation coverage
-npm run generate:docs         # Update API documentation
+npm run validate:schemas      # Valider tous les schémas Zod
+npm run analyze:api-coverage  # Vérifier la couverture de validation
+npm run generate:docs         # Mettre à jour la documentation API
 ```
 
-### For Testing
+### Pour les Tests
 ```bash
-npm test                      # Run all tests including new endpoint tests
-npm run type-check           # Verify TypeScript compilation
+npm test                      # Exécuter tous les tests incluant les tests des nouveaux endpoints
+npm run type-check           # Vérifier la compilation TypeScript
 ```
 
-## Quality Gates and Review Process
+## Portes de Qualité et Processus de Revue
 
-### Before Code Review
-**✅ Developer Checklist:**
-- [ ] Zod schemas created and exported
-- [ ] Validation middleware applied to route
-- [ ] Controller returns standardized response format
-- [ ] Comprehensive tests written and passing
-- [ ] Documentation generated and updated
-- [ ] No TypeScript compilation errors
+### Avant la Revue de Code
+**Checklist Développeur :**
+- [ ] Schémas Zod créés et exportés
+- [ ] Middleware de validation appliqué à la route
+- [ ] Contrôleur retournant le format de réponse standardisé
+- [ ] Tests complets écrits et passants
+- [ ] Documentation générée et mise à jour
+- [ ] Aucune erreur de compilation TypeScript
 
-### During Code Review
-**✅ Reviewer Checklist:**
-- [ ] Validation schemas follow established patterns
-- [ ] Security considerations addressed (input sanitization, authorization)
-- [ ] Error handling is comprehensive and user-friendly
-- [ ] Tests cover edge cases and security scenarios
-- [ ] Documentation is accurate and complete
+### Pendant la Revue de Code
+**Checklist Réviseur :**
+- [ ] Les schémas de validation suivent les patterns établis
+- [ ] Les considérations de sécurité sont traitées (assainissement des entrées, autorisation)
+- [ ] La gestion des erreurs est complète et conviviale
+- [ ] Les tests couvrent les cas limites et les scénarios de sécurité
+- [ ] La documentation est précise et complète
 
-### Before Deployment
-**✅ Final Verification:**
-- [ ] All tests passing including new endpoint tests
-- [ ] API coverage analysis shows increased validation coverage
-- [ ] Performance impact assessed (validation overhead <5ms)
-- [ ] Security review completed for external-facing endpoints
+### Avant le Déploiement
+**Vérification Finale :**
+- [ ] Tous les tests passent incluant les tests des nouveaux endpoints
+- [ ] L'analyse de couverture API montre une couverture de validation accrue
+- [ ] L'impact sur les performances évalué (surcharge de validation <5ms)
+- [ ] Revue de sécurité complétée pour les endpoints exposés à l'extérieur
 
-## Common Patterns and Examples
+## Patterns Courants et Exemples
 
-### Standard CRUD Operations
-Refer to existing implementations:
-- **GET endpoints**: `/api/audits` (list) and `/api/audits/:id` (single)
-- **POST endpoints**: `/api/audits` (create)
-- **PUT endpoints**: `/api/audits/:id` (update)
-- **DELETE endpoints**: Follow pattern in external access management
+### Opérations CRUD Standard
+Référez-vous aux implémentations existantes :
+- **Endpoints GET** : `/api/audits` (liste) et `/api/audits/:id` (unitaire)
+- **Endpoints POST** : `/api/audits` (création)
+- **Endpoints PUT** : `/api/audits/:id` (mise à jour)
+- **Endpoints DELETE** : Suivre le pattern de la gestion d'accès externe
 
-### Security-Critical Endpoints
-Reference external portal endpoints for:
-- Input sanitization patterns
-- Access control validation
-- Error handling that doesn't leak sensitive information
+### Endpoints Critiques pour la Sécurité
+Référencez les endpoints du portail externe pour :
+- Les patterns d'assainissement des entrées
+- La validation du contrôle d'accès
+- La gestion d'erreurs qui ne divulgue pas d'informations sensibles
 
-### File Operations
-Reference PDF generation endpoints for:
-- File validation (filename, type, size)
-- Path traversal prevention
-- Secure file handling
+### Opérations sur les Fichiers
+Référencez les endpoints de génération PDF pour :
+- La validation des fichiers (nom de fichier, type, taille)
+- La prévention du path traversal
+- La manipulation sécurisée des fichiers
 
-## Migration of Existing Endpoints
+## Migration des Endpoints Existants
 
-For updating existing endpoints without validation:
+Pour mettre à jour les endpoints existants sans validation :
 
-1. **Refer to Migration Guide**: `/documentation/reference/API_ENDPOINT_MIGRATION_GUIDE.md`
-2. **Follow Tier-Based Approach**: Use roadmap in `/documentation/planning/future/API_VALIDATION_ROADMAP.md`
-3. **Use Coverage Analysis**: `npm run analyze:api-coverage` to prioritize endpoints
+1. **Consultez le Guide de Migration** : `/documentation/reference/API_ENDPOINT_MIGRATION_GUIDE.md`
+2. **Suivez l'Approche par Niveaux** : Utilisez la feuille de route dans `/documentation/planning/future/API_VALIDATION_ROADMAP.md`
+3. **Utilisez l'Analyse de Couverture** : `npm run analyze:api-coverage` pour prioriser les endpoints
 
-## Monitoring and Maintenance
+## Suivi et Maintenance
 
-### Monthly Tasks
-- [ ] Run `npm run analyze:api-coverage` to track progress
-- [ ] Review validation performance impact
-- [ ] Update documentation with any new patterns
+### Tâches Mensuelles
+- [ ] Exécuter `npm run analyze:api-coverage` pour suivre les progrès
+- [ ] Revoir l'impact de la validation sur les performances
+- [ ] Mettre à jour la documentation avec tout nouveau pattern
 
-### Quarterly Tasks  
-- [ ] Review and update this process document
-- [ ] Assess need for new automation tools
-- [ ] Evaluate schema patterns for improvements
+### Tâches Trimestrielles
+- [ ] Revoir et mettre à jour ce document de processus
+- [ ] Évaluer le besoin de nouveaux outils d'automatisation
+- [ ] Évaluer les patterns de schéma pour des améliorations
 
-## See Also
+## Voir Aussi
 
-- `/documentation/reference/API_ENDPOINT_MIGRATION_GUIDE.md` - Detailed migration procedures
-- `/documentation/reference/TYPE_SAFETY_IMPLEMENTATION_SUMMARY.md` - Project overview and achievements
-- `/documentation/planning/future/API_VALIDATION_ROADMAP.md` - Roadmap for remaining endpoints
-- `/documentation/technical/backend/api/api-documentation.md` - Generated API documentation
+- `/documentation/reference/API_ENDPOINT_MIGRATION_GUIDE.md` - Procédures de migration détaillées
+- `/documentation/reference/TYPE_SAFETY_IMPLEMENTATION_SUMMARY.md` - Vue d'ensemble du projet et réalisations
+- `/documentation/planning/future/API_VALIDATION_ROADMAP.md` - Feuille de route pour les endpoints restants
+- `/documentation/technical/backend/api/api-documentation.md` - Documentation API générée
 
-## Success Metrics
+## Métriques de Succès
 
-**Target Goals:**
-- **100% validation coverage** for all new endpoints
-- **<5ms validation overhead** per request
-- **Zero runtime type errors** in production
-- **Always up-to-date documentation** through automation
+**Objectifs Cibles :**
+- **100% de couverture de validation** pour tous les nouveaux endpoints
+- **<5ms de surcharge de validation** par requête
+- **Zéro erreur de type à l'exécution** en production
+- **Documentation toujours à jour** grâce à l'automatisation
 
-**Current Status:**
-- 68/193 endpoints validated (35% coverage)
-- All critical workflows and external-facing endpoints secured
-- Automation tools in place for ongoing maintenance
-- Clear roadmap for reaching 100% coverage
+**État Actuel :**
+- 68/193 endpoints validés (35% de couverture)
+- Tous les workflows critiques et endpoints exposés à l'extérieur sécurisés
+- Outils d'automatisation en place pour la maintenance continue
+- Feuille de route claire pour atteindre 100% de couverture
 
-By following this process, we ensure that all future API development maintains the high standards of type safety, security, and documentation established during the comprehensive validation implementation.
+En suivant ce processus, nous nous assurons que tout développement API futur maintient les standards élevés de sûreté de typage, de sécurité et de documentation établis lors de l'implémentation complète de la validation.

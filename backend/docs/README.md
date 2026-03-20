@@ -1,23 +1,23 @@
-# Backend Setup
+# Configuration du Backend
 
-This backend is a Node.js/Express application using TypeScript and Prisma with a SQLite database.
+Ce backend est une application Node.js/Express utilisant TypeScript et Prisma avec une base de données SQLite.
 
-## Prerequisites
+## Prérequis
 
-- Node.js (check root `package.json` for engine requirements if specified)
+- Node.js (vérifiez le `package.json` racine pour les exigences de moteur si spécifiées)
 - npm
 
-## Initial Setup
+## Configuration Initiale
 
-1.  Install dependencies from the root directory: `npm install`
-2.  Navigate to the project root.
-3.  Create the initial SQLite database and apply the schema: `npm run db:migrate:dev -w backend`
-    *   This will create a `dev.db` file in the `backend` directory (which is gitignored).
-4.  Ensure you have a `.env` file in the `backend` directory (see `.env.example` if one exists, or create it based on `backend/.env` contents described during setup).
+1.  Installez les dépendances depuis le répertoire racine : `npm install`
+2.  Naviguez vers la racine du projet.
+3.  Créez la base de données SQLite initiale et appliquez le schéma : `npm run db:migrate:dev -w backend`
+    *   Cela créera un fichier `dev.db` dans le répertoire `backend` (qui est gitignored).
+4.  Assurez-vous d'avoir un fichier `.env` dans le répertoire `backend` (consultez `.env.example` s'il existe, ou créez-le selon le contenu de `backend/.env` décrit lors de la configuration).
 
-## Running the Application
+## Exécution de l'Application
 
--   **Development:** Run `npm run dev` from the *root* directory. This uses `concurrently` to start both backend (with `nodemon`) and frontend dev servers.
--   **Production:**
-    1.  Build the backend: `npm run build -w backend`
-    2.  Start the backend: `npm run start -w backend` 
+-   **Développement :** Exécutez `npm run dev` depuis le répertoire *racine*. Cela utilise `concurrently` pour démarrer simultanément les serveurs de développement backend (avec `nodemon`) et frontend.
+-   **Production :**
+    1.  Compilez le backend : `npm run build -w backend`
+    2.  Démarrez le backend : `npm run start -w backend`

@@ -1,128 +1,128 @@
-# LLM Integration Process
+# Processus d'Intégration LLM
 
-Generic principles for using LLMs effectively with technical documentation and development workflows.
+Principes génériques pour utiliser efficacement les LLM avec la documentation technique et les workflows de développement.
 
-## See also
+## Voir aussi
 
-- `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` - Keeping documentation current
-- `documentation/processes/WRITE_EVERGREEN_DOC.md` - Writing maintainable documentation
-- `documentation/reference/LLM_API_IMPLEMENTATION.md` - Project-specific LLM integration example
+- `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` - Maintenir la documentation à jour
+- `documentation/processes/WRITE_EVERGREEN_DOC.md` - Rédiger de la documentation maintenable
+- `documentation/reference/LLM_API_IMPLEMENTATION.md` - Exemple d'intégration LLM spécifique au projet
 
-## Core Principles
+## Principes Fondamentaux
 
-### 1. Documentation as LLM Context
+### 1. La Documentation comme Contexte LLM
 
-**Principle**: Structure technical documentation to serve both human developers and LLM assistance.
+**Principe** : Structurer la documentation technique pour servir à la fois les développeurs humains et l'assistance LLM.
 
-**Key Characteristics:**
-- **Clear examples** - Include realistic request/response examples for APIs
-- **Consistent patterns** - Use standardized formats across similar documentation
-- **Complete context** - Provide enough information for LLMs to understand the full picture
-- **Error documentation** - Include error cases and handling patterns
+**Caractéristiques Clés :**
+- **Exemples clairs** - Inclure des exemples réalistes de requête/réponse pour les API
+- **Patterns cohérents** - Utiliser des formats standardisés dans les documentations similaires
+- **Contexte complet** - Fournir suffisamment d'informations pour que les LLM comprennent la vue d'ensemble
+- **Documentation des erreurs** - Inclure les cas d'erreur et les patterns de gestion
 
-### 2. Context File Hierarchy
+### 2. Hiérarchie des Fichiers de Contexte
 
-**Principle**: Provide LLMs with context in logical order from general to specific.
+**Principe** : Fournir aux LLM un contexte dans un ordre logique du général au spécifique.
 
-**Recommended Order:**
-1. **System overview** - High-level architecture and patterns
-2. **API/Interface documentation** - Current endpoints, schemas, examples  
-3. **Implementation details** - Code patterns, client libraries, utilities
-4. **Domain-specific context** - Feature-specific documentation as needed
+**Ordre Recommandé :**
+1. **Vue d'ensemble du système** - Architecture et patterns de haut niveau
+2. **Documentation API/Interface** - Endpoints actuels, schémas, exemples
+3. **Détails d'implémentation** - Patterns de code, bibliothèques client, utilitaires
+4. **Contexte spécifique au domaine** - Documentation spécifique à la fonctionnalité selon les besoins
 
-### 3. Prompt Engineering for Development
+### 3. Ingénierie de Prompts pour le Développement
 
-**Principle**: Use structured prompts that reference your documentation system.
+**Principe** : Utiliser des prompts structurés qui référencent votre système de documentation.
 
-**Template Structure:**
+**Structure de Modèle :**
 ```
-I'm working on [SPECIFIC_TASK] using our [SYSTEM_TYPE].
+Je travaille sur [TACHE_SPECIFIQUE] en utilisant notre [TYPE_DE_SYSTEME].
 
-Current documentation is attached covering:
-- [LIST_CONTEXT_FILES]
+La documentation actuelle est jointe et couvre :
+- [LISTE_FICHIERS_CONTEXTE]
 
-Please help me [SPECIFIC_REQUEST] following our established patterns.
+Aidez-moi s'il vous plaît à [DEMANDE_SPECIFIQUE] en suivant nos patterns établis.
 ```
 
-### 4. Validation Workflow
+### 4. Workflow de Validation
 
-**Principle**: Always validate LLM suggestions against your current documentation and standards.
+**Principe** : Toujours valider les suggestions du LLM par rapport à votre documentation et vos standards actuels.
 
-**Validation Steps:**
-1. **Check currency** - Ensure LLM is using latest documentation
-2. **Verify patterns** - Confirm suggestions follow established conventions  
-3. **Test integration** - Run tests/builds to verify implementation
-4. **Update documentation** - Document new patterns that emerge
+**Étapes de Validation :**
+1. **Vérifier l'actualité** - S'assurer que le LLM utilise la documentation la plus récente
+2. **Vérifier les patterns** - Confirmer que les suggestions suivent les conventions établies
+3. **Tester l'intégration** - Exécuter les tests/builds pour vérifier l'implémentation
+4. **Mettre à jour la documentation** - Documenter les nouveaux patterns qui émergent
 
-## Implementation Guidelines
+## Directives d'Implémentation
 
-### Documentation Structure for LLM Consumption
+### Structure de Documentation pour la Consommation LLM
 
-**Machine-readable formats** (when possible):
-- OpenAPI specifications for APIs
-- JSON schemas for data structures  
-- Structured markdown with consistent headings
+**Formats lisibles par machine** (quand possible) :
+- Spécifications OpenAPI pour les API
+- Schémas JSON pour les structures de données
+- Markdown structuré avec des titres cohérents
 
-**Human-readable formats** (always):
-- Clear examples with realistic data
-- Error case documentation
-- Cross-references between related concepts
+**Formats lisibles par l'humain** (toujours) :
+- Exemples clairs avec des données réalistes
+- Documentation des cas d'erreur
+- Références croisées entre concepts liés
 
-### Maintaining LLM-Friendly Documentation
+### Maintenance de la Documentation Compatible LLM
 
-**When updating technical documentation:**
-1. **Include examples** - Add realistic usage examples
-2. **Document errors** - Include common error cases and solutions
-3. **Show patterns** - Demonstrate consistent usage patterns
-4. **Cross-reference** - Link to related documentation
+**Lors de la mise à jour de la documentation technique :**
+1. **Inclure des exemples** - Ajouter des exemples d'utilisation réalistes
+2. **Documenter les erreurs** - Inclure les cas d'erreur courants et leurs solutions
+3. **Montrer les patterns** - Démontrer les patterns d'utilisation cohérents
+4. **Références croisées** - Lier à la documentation connexe
 
-**When adding new features:**
-1. **Update schemas** - Modify formal specifications first
-2. **Regenerate docs** - Use automated documentation generation when available
-3. **Test LLM integration** - Verify LLMs can understand new patterns
-4. **Document patterns** - Add new usage patterns to guides
+**Lors de l'ajout de nouvelles fonctionnalités :**
+1. **Mettre à jour les schémas** - Modifier d'abord les spécifications formelles
+2. **Régénérer la documentation** - Utiliser la génération automatique de documentation quand disponible
+3. **Tester l'intégration LLM** - Vérifier que les LLM comprennent les nouveaux patterns
+4. **Documenter les patterns** - Ajouter les nouveaux patterns d'utilisation aux guides
 
-### Common Integration Patterns
+### Patterns d'Intégration Courants
 
-**API Development:**
-- Generate formal specifications from code (OpenAPI, JSON Schema)
-- Include realistic request/response examples
-- Document authentication and error handling patterns
-- Provide client library usage examples
+**Développement API :**
+- Générer des spécifications formelles à partir du code (OpenAPI, JSON Schema)
+- Inclure des exemples réalistes de requête/réponse
+- Documenter les patterns d'authentification et de gestion d'erreurs
+- Fournir des exemples d'utilisation des bibliothèques client
 
-**Frontend Development:**
-- Document component patterns and usage
-- Include state management examples
-- Show integration patterns with backend APIs
-- Document testing approaches
+**Développement Frontend :**
+- Documenter les patterns de composants et leur utilisation
+- Inclure des exemples de gestion d'état
+- Montrer les patterns d'intégration avec les API backend
+- Documenter les approches de test
 
-**Error Handling:**
-- Document common error scenarios
-- Provide debugging guides
-- Include troubleshooting patterns
-- Show error recovery examples
+**Gestion des Erreurs :**
+- Documenter les scénarios d'erreur courants
+- Fournir des guides de débogage
+- Inclure des patterns de dépannage
+- Montrer des exemples de récupération après erreur
 
-## Troubleshooting LLM Integration
+## Dépannage de l'Intégration LLM
 
-**LLM suggests outdated patterns:**
-- Check if documentation is current
-- Regenerate automated documentation
-- Update context files provided to LLM
+**Le LLM suggère des patterns obsolètes :**
+- Vérifier si la documentation est à jour
+- Régénérer la documentation automatisée
+- Mettre à jour les fichiers de contexte fournis au LLM
 
-**LLM misunderstands requirements:**
-- Provide more specific context files
-- Use more detailed prompts
-- Include relevant examples in documentation
+**Le LLM ne comprend pas les exigences :**
+- Fournir des fichiers de contexte plus spécifiques
+- Utiliser des prompts plus détaillés
+- Inclure des exemples pertinents dans la documentation
 
-**LLM suggests non-standard patterns:**
-- Verify LLM has access to style guides
-- Check if patterns are documented in standards
-- Update documentation with preferred approaches
+**Le LLM suggère des patterns non standards :**
+- Vérifier que le LLM a accès aux guides de style
+- Vérifier si les patterns sont documentés dans les standards
+- Mettre à jour la documentation avec les approches préférées
 
-## Benefits of This Approach
+## Avantages de cette Approche
 
-1. **Consistency** - LLMs follow documented patterns
-2. **Quality** - Validation against current standards
-3. **Maintainability** - Documentation serves multiple purposes
-4. **Efficiency** - Reduced context switching between human and LLM development
-5. **Knowledge preservation** - Patterns are documented for future reference
+1. **Cohérence** - Les LLM suivent les patterns documentés
+2. **Qualité** - Validation par rapport aux standards actuels
+3. **Maintenabilité** - La documentation sert à plusieurs fins
+4. **Efficacité** - Réduction du changement de contexte entre développement humain et LLM
+5. **Préservation des connaissances** - Les patterns sont documentés pour référence future

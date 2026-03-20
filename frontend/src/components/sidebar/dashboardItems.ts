@@ -25,16 +25,16 @@ const navigationSection = [
   {
     href: "/dashboard",
     icon: Sliders,
-    title: "Dashboards",
+    title: "Tableaux de Bord",
     badge: "5",
     children: [
       {
         href: "/dashboard/default",
-        title: "Default",
+        title: "Par Défaut",
       },
       {
         href: "/dashboard/analytics",
-        title: "Analytics",
+        title: "Analytique",
       },
       {
         href: "/dashboard/saas",
@@ -57,19 +57,19 @@ const exercisesSection = [
   {
     href: "/exercises", // Base path, maybe not directly clickable or points to an overview
     icon: CheckSquare, // Use an appropriate icon
-    title: "Exercises",
+    title: "Exercices",
     children: [
       {
         href: "/exercises/llm-query",
-        title: "LLM Query",
+        title: "Requête LLM",
       },
       {
         href: "/exercises/tasks/list", // Assuming this is the correct path from routes.tsx
-        title: "Task List",
+        title: "Liste de Tâches",
       },
       {
         href: "/exercises/analytics-chart",
-        title: "Analytics Chart",
+        title: "Graphique d'Analytique",
       },
     ],
   },
@@ -83,89 +83,89 @@ const appsSection = [
     children: [
       {
         href: "/ecommerce/products",
-        title: "Products",
+        title: "Produits",
         badge: "New",
       },
       {
         href: "/ecommerce/products-details",
-        title: "Product Details",
+        title: "Détails du Produit",
         badge: "New",
       },
       {
         href: "/ecommerce/orders",
-        title: "Orders",
+        title: "Commandes",
         badge: "New",
       },
       {
         href: "/ecommerce/customers",
-        title: "Customers",
+        title: "Clients",
       },
       {
         href: "/ecommerce/invoice",
-        title: "Invoice",
+        title: "Facture",
       },
       {
         href: "/ecommerce/pricing",
-        title: "Pricing",
+        title: "Tarification",
       },
     ],
   },
   {
     href: "/projects",
     icon: Layout,
-    title: "Projects",
+    title: "Projets",
     children: [
       {
         href: "/projects/overview",
-        title: "Overview",
+        title: "Vue d'ensemble",
       },
       {
         href: "/projects/details",
-        title: "Details",
+        title: "Détails",
       },
     ],
   },
   {
     href: "/chat",
     icon: List,
-    title: "Chat",
+    title: "Discussion",
   },
   {
     href: "/file-manager",
     icon: Files,
-    title: "File Manager",
+    title: "Gestionnaire de Fichiers",
     badge: "New",
   },
   {
     href: "/calendar",
     icon: Calendar,
-    title: "Calendar",
+    title: "Calendrier",
   },
   {
     href: "/email",
     icon: Mail,
     title: "Email",
-    badge: "New",
+    badge: "Nouveau",
     children: [
       {
         href: "/email/inbox",
-        title: "Inbox",
+        title: "Boîte de réception",
       },
       {
         href: "/email/details",
-        title: "Details",
+        title: "Détails",
       },
     ],
   },
   {
     href: "/tasks",
     icon: Trello,
-    title: "Tasks",
+    title: "Tâches",
     children: [
       {
         href: "/tasks/list",
-        title: "List",
-        badge: "New",
+        title: "Liste",
+        badge: "Nouveau",
       },
       {
         href: "/tasks/kanban",
@@ -183,54 +183,54 @@ const pagesSection = [
     children: [
       {
         href: "/pages/profile",
-        title: "Profile",
+        title: "Profil",
       },
       {
         href: "/pages/settings",
-        title: "Settings",
+        title: "Paramètres",
       },
       {
         href: "/pages/blank",
-        title: "Blank Page",
+        title: "Page Vierge",
       },
     ],
   },
   {
     href: "/auth",
     icon: Users,
-    title: "Auth",
+    title: "Authentification",
     children: [
       {
         href: "/auth/sign-in",
-        title: "Sign In",
+        title: "Connexion",
       },
       {
         href: "/auth-cover/sign-in",
-        title: "Sign In Cover",
+        title: "Connexion Couverture",
       },
       {
         href: "/auth/sign-up",
-        title: "Sign Up",
+        title: "Inscription",
       },
       {
         href: "/auth-cover/sign-up",
-        title: "Sign Up Cover",
+        title: "Inscription Couverture",
       },
       {
         href: "/auth/reset-password",
-        title: "Reset Password",
+        title: "Réinitialiser le Mot de Passe",
       },
       {
         href: "/auth-cover/reset-password",
-        title: "Reset Password Cover",
+        title: "Réinitialiser le Mot de Passe Couverture",
       },
       {
         href: "/auth/lock-screen",
-        title: "Lock Screen",
+        title: "Écran de Verrouillage",
       },
       {
         href: "/auth-cover/lock-screen",
-        title: "Lock Screen Cover",
+        title: "Écran de Verrouillage Couverture",
       },
       {
         href: "/auth/2fa",
@@ -253,8 +253,8 @@ const pagesSection = [
   {
     href: "/landing",
     icon: LayoutTemplate,
-    title: "Landing",
-    badge: "New",
+    title: "Page d'Accueil",
+    badge: "Nouveau",
   },
   {
     href: "/docs/introduction",
@@ -267,35 +267,35 @@ const componentsSection = [
   {
     href: "/ui",
     icon: Grid,
-    title: "UI Elements",
+    title: "Éléments UI",
     children: [
       {
         href: "/ui/alerts",
-        title: "Alerts",
+        title: "Alertes",
       },
       {
         href: "/ui/buttons",
-        title: "Buttons",
+        title: "Boutons",
       },
       {
         href: "/ui/cards",
-        title: "Cards",
+        title: "Cartes",
       },
       {
         href: "/ui/carousel",
-        title: "Carousel",
+        title: "Carrousel",
       },
       {
         href: "/ui/embed-video",
-        title: "Embed Video",
+        title: "Vidéo Intégrée",
       },
       {
         href: "/ui/general",
-        title: "General",
+        title: "Général",
       },
       {
         href: "/ui/grid",
-        title: "Grid",
+        title: "Grille",
       },
       {
         href: "/ui/modals",
@@ -311,14 +311,14 @@ const componentsSection = [
       },
       {
         href: "/ui/typography",
-        title: "Typography",
+        title: "Typographie",
       },
     ],
   },
   {
     href: "/icons",
     icon: Heart,
-    title: "Icons",
+    title: "Icônes",
     badge: "1500+",
     children: [
       {
@@ -334,30 +334,30 @@ const componentsSection = [
   {
     href: "/forms",
     icon: CheckSquare,
-    title: "Forms",
+    title: "Formulaires",
     children: [
       {
         href: "/forms/layouts",
-        title: "Layouts",
+        title: "Mises en page",
       },
       {
         href: "/forms/basic-inputs",
-        title: "Basic Inputs",
+        title: "Champs Basiques",
       },
       {
         href: "/forms/input-groups",
-        title: "Input Groups",
+        title: "Groupes de Champs",
       },
       {
         href: "/forms/floating-labels",
-        title: "Floating Labels",
+        title: "Libellés Flottants",
       },
     ],
   },
   {
     href: "/tables",
     icon: List,
-    title: "Tables",
+    title: "Tableaux",
   },
 ] as unknown as SidebarItemsType[];
 
@@ -365,11 +365,11 @@ const pluginsSection = [
   {
     href: "/form-plugins",
     icon: CheckSquare,
-    title: "Form Plugins",
+    title: "Plugins de Formulaire",
     children: [
       {
         href: "/form-plugins/advanced-inputs",
-        title: "Advanced Inputs",
+        title: "Champs Avancés",
       },
       {
         href: "/form-plugins/formik",
@@ -378,14 +378,14 @@ const pluginsSection = [
       },
       {
         href: "/form-plugins/editors",
-        title: "Editors",
+        title: "Éditeurs",
       },
     ],
   },
   {
     href: "/advanced-tables",
     icon: List,
-    title: "Advanced Tables",
+    title: "Tableaux Avancés",
     children: [
       {
         href: "/advanced-tables/pagination",
@@ -393,27 +393,27 @@ const pluginsSection = [
       },
       {
         href: "/advanced-tables/column-sorting",
-        title: "Column Sorting",
+        title: "Tri par Colonne",
       },
       {
         href: "/advanced-tables/column-filtering",
-        title: "Column Filtering",
+        title: "Filtrage par Colonne",
       },
       {
         href: "/advanced-tables/row-expanding",
-        title: "Row Expanding",
+        title: "Extension de Ligne",
       },
       {
         href: "/advanced-tables/row-selection",
-        title: "Row Selection",
+        title: "Sélection de Ligne",
       },
     ],
   },
   {
     href: "/charts",
     icon: PieChart,
-    title: "Charts",
-    badge: "New",
+    title: "Graphiques",
+    badge: "Nouveau",
     children: [
       {
         href: "/charts/chartjs",
@@ -434,7 +434,7 @@ const pluginsSection = [
   {
     href: "/maps",
     icon: MapPin,
-    title: "Maps",
+    title: "Cartes",
     children: [
       {
         href: "/maps/google-maps",
@@ -442,18 +442,18 @@ const pluginsSection = [
       },
       {
         href: "/maps/vector-maps",
-        title: "Vector Maps",
+        title: "Cartes Vectorielles",
       },
     ],
   },
   {
     href: "/404",
     icon: Share,
-    title: "Multi Level",
+    title: "Multi Niveau",
     children: [
       {
         href: "/404",
-        title: "Two Levels",
+        title: "Deux Niveaux",
         children: [
           {
             href: "/404",
@@ -467,7 +467,7 @@ const pluginsSection = [
       },
       {
         href: "/404",
-        title: "Three Levels",
+        title: "Trois Niveaux",
         children: [
           {
             href: "/404",
@@ -499,11 +499,11 @@ const navItems = [
     pages: navigationSection,
   },
   {
-    title: "Exercises", // Add the new section title
-    pages: exercisesSection, // Add the new section pages
+    title: "Exercices",
+    pages: exercisesSection,
   },
   {
-    title: "Apps",
+    title: "Applications",
     pages: appsSection,
   },
   {
@@ -511,11 +511,11 @@ const navItems = [
     pages: pagesSection,
   },
   {
-    title: "Tools & Components",
+    title: "Outils et Composants",
     pages: componentsSection,
   },
   {
-    title: "Plugins & Addons",
+    title: "Plugins et Extensions",
     pages: pluginsSection,
   },
 ];

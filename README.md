@@ -1,32 +1,32 @@
-# AI-Assisted Development Monorepo
+# Monorepo de Développement Assisté par IA
 
-This project is a monorepo containing a backend and frontend application, set up for AI-assisted development.
+Ce projet est un monorepo contenant une application backend et frontend, configuré pour le développement assisté par IA.
 
-## Quick Start
+## Démarrage Rapide
 
-1.  **Install Dependencies:**
-    Navigate to the root directory of the project and run:
+1.  **Installer les dépendances :**
+    Naviguez vers le répertoire racine du projet et exécutez :
     ```bash
     npm install
     ```
 
-2.  **Set Up Database:**
-    Navigate to the backend directory and run the initial database migration:
+2.  **Configurer la base de données :**
+    Naviguez vers le répertoire backend et exécutez la migration initiale :
     ```bash
     cd backend
-    # Apply schema changes to the database
-    npx prisma migrate dev --name init 
-    # Populate the database with example data
-    npx prisma db seed 
-    cd .. 
+    # Appliquer les modifications du schéma à la base de données
+    npx prisma migrate dev --name init
+    # Remplir la base de données avec des données d'exemple
+    npx prisma db seed
+    cd ..
     ```
-    *Note: If you encounter issues, ensure you have SQLite installed or adjust the Prisma schema (`backend/prisma/schema.prisma`) for your preferred database.*
+    *Remarque : Si vous rencontrez des problèmes, assurez-vous que SQLite est installé ou ajustez le schéma Prisma (`backend/prisma/schema.prisma`) pour votre base de données préférée.*
 
-3.  **Run the Development Servers:**
-    In the root directory, start both the frontend and backend servers with:
+3.  **Lancer les serveurs de développement :**
+    Dans le répertoire racine, démarrez les serveurs frontend et backend avec :
     ```bash
     npm run dev
     ```
-    This command will launch both servers concurrently. The backend will typically run on `http://localhost:5001` and the frontend on `http://localhost:5000` (or the next available ports, as configured).
+    Cette commande lancera les deux serveurs simultanément. Le backend sera généralement accessible sur `http://localhost:5001` et le frontend sur `http://localhost:5000` (ou les prochains ports disponibles, selon la configuration).
 
-You should now be able to access the frontend application in your browser and interact with the backend API. 
+Vous devriez maintenant pouvoir accéder à l'application frontend dans votre navigateur et interagir avec l'API backend.

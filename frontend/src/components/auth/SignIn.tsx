@@ -24,10 +24,10 @@ const SignIn = () => {
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
-          .email("Must be a valid email")
+          .email("L'email doit être valide")
           .max(255)
-          .required("Email is required"),
-        password: Yup.string().max(255).required("Password is required"),
+          .required("L'email est requis"),
+        password: Yup.string().max(255).required("Le mot de passe est requis"),
       })}
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
         try {
@@ -35,7 +35,7 @@ const SignIn = () => {
 
           navigate("/private");
         } catch (error: any) {
-          const message = error.message || "Something went wrong";
+          const message = error.message || "Une erreur est survenue";
 
           setStatus({ success: false });
           setErrors({ submit: message });
@@ -68,7 +68,7 @@ const SignIn = () => {
                   className="fs-3"
                 />
               </span>
-              Continue with Facebook
+              Continuer avec Facebook
             </Link>
             <Link
               to="/dashboard/default"
@@ -80,7 +80,7 @@ const SignIn = () => {
               >
                 <img src={brandGoogle} height="22" alt="Google" />
               </span>
-              Continue with Google
+              Continuer avec Google
             </Link>
             <Link
               to="/dashboard/default"
@@ -92,7 +92,7 @@ const SignIn = () => {
               >
                 <FontAwesomeIcon icon={faApple} fixedWidth className="fs-3" />
               </span>
-              Continue with Apple
+              Continuer avec Apple
             </Link>
           </div>
           <Row>
@@ -100,7 +100,7 @@ const SignIn = () => {
               <hr />
             </Col>
             <Col xs="auto" className="text-uppercase d-flex align-items-center">
-              Or
+              Ou
             </Col>
             <Col>
               <hr />
@@ -109,8 +109,8 @@ const SignIn = () => {
           <Form onSubmit={handleSubmit}>
             <Alert className="my-3" variant="primary">
               <div className="alert-message">
-                Use <strong>demo@bootlab.io</strong> and{" "}
-                <strong>unsafepassword</strong> to sign in
+                Utilisez <strong>demo@bootlab.io</strong> et{" "}
+                <strong>unsafepassword</strong> pour vous connecter
               </div>
             </Alert>
             {errors.submit && (
@@ -125,7 +125,7 @@ const SignIn = () => {
                 size="lg"
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder="Saisissez votre email"
                 value={values.email}
                 isInvalid={Boolean(touched.email && errors.email)}
                 onBlur={handleBlur}
@@ -139,12 +139,12 @@ const SignIn = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mot de passe</Form.Label>
               <Form.Control
                 size="lg"
                 type="password"
                 name="password"
-                placeholder="Enter your password"
+                placeholder="Saisissez votre mot de passe"
                 value={values.password}
                 isInvalid={Boolean(touched.password && errors.password)}
                 onBlur={handleBlur}
@@ -156,7 +156,7 @@ const SignIn = () => {
                 </Form.Control.Feedback>
               )}
               <small>
-                <Link to="/auth/reset-password">Forgot password?</Link>
+                <Link to="/auth/reset-password">Mot de passe oublié ?</Link>
               </small>
             </Form.Group>
 
@@ -164,7 +164,7 @@ const SignIn = () => {
               <Form.Check
                 type="checkbox"
                 id="rememberMe"
-                label="Remember me"
+                label="Se souvenir de moi"
                 defaultChecked
               />
             </div>
@@ -176,7 +176,7 @@ const SignIn = () => {
                 size="lg"
                 disabled={isSubmitting}
               >
-                Sign in
+                Se connecter
               </Button>
             </div>
           </Form>

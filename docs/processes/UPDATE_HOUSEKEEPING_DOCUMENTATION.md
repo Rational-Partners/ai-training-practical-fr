@@ -1,146 +1,146 @@
-# Update Housekeeping Documentation
+# Mise à Jour et Maintenance de la Documentation
 
-This document describes the process for keeping project documentation up-to-date as the codebase evolves. Documentation housekeeping should be performed regularly to ensure accuracy and prevent confusion.
+Ce document décrit le processus pour maintenir la documentation du projet à jour au fur et à mesure que le code source évolue. La maintenance de la documentation doit être effectuée régulièrement pour garantir la précision et éviter la confusion.
 
-## See also
+## Voir aussi
 
 - `documentation/DOCUMENTATION_ORGANISATION.md`
-- `documentation/processes/WRITE_EVERGREEN_DOC.md` - Guidelines for writing evergreen documentation
-- `documentation/processes/WRITE_PLANNING_DOC.md` - Guidelines for ephemeral planning documents
-- `documentation/processes/GIT_COMMITS.md` - How to commit documentation updates
+- `documentation/processes/WRITE_EVERGREEN_DOC.md` - Directives pour rédiger de la documentation evergreen
+- `documentation/processes/WRITE_PLANNING_DOC.md` - Directives pour les documents de planification éphémères
+- `documentation/processes/GIT_COMMITS.md` - Comment committer les mises à jour de documentation
 
-## When to Update Documentation
+## Quand Mettre à Jour la Documentation
 
-Perform documentation housekeeping:
-- After implementing major features
-- When architectural decisions change
-- When you notice outdated information while working
-- As a periodic maintenance task (e.g., weekly/monthly)
-- Before major releases or milestones
+Effectuez la maintenance de la documentation :
+- Après l'implémentation de fonctionnalités majeures
+- Lorsque les décisions architecturales changent
+- Lorsque vous remarquez des informations obsolètes en travaillant
+- Comme tâche de maintenance périodique (par ex., hebdomadaire/mensuelle)
+- Avant les releases majeures ou les jalons importants
 
-## Process Overview
+## Vue d'Ensemble du Processus
 
-### Step 1: Comprehensive Review
+### Étape 1 : Revue Complète
 
-Read all key documentation to understand the current state:
-1. `README.md` - Project overview and goals
-2. `documentation/reference/*.md` - All evergreen documentation
-3. Recent `documentation/planning/*.md` - Latest decisions and changes
-4. Key code files and API routes
-5. Configuration files and migrations
+Lisez toute la documentation clé pour comprendre l'état actuel :
+1. `README.md` - Vue d'ensemble et objectifs du projet
+2. `documentation/reference/*.md` - Toute la documentation evergreen
+3. Fichiers récents dans `documentation/planning/*.md` - Dernières décisions et modifications
+4. Fichiers de code clés et routes API
+5. Fichiers de configuration et migrations
 
-Use subagents where appropriate to maintain context window efficiency.
+Utilisez des sous-agents si approprié pour maintenir l'efficacité de la fenêtre de contexte.
 
-### Step 2: Identify Outdated Content
+### Étape 2 : Identifier le Contenu Obsolète
 
-Look for:
-- **Feature Status Mismatches** - Documentation says "not implemented" but code exists
-- **Architectural Drift** - Documentation describes old approaches superseded by new decisions
-- **Missing Features** - New functionality not documented
-- **Broken Cross-References** - Links to renamed/removed files
-- **Duplicate Information** - Same content in multiple places (consolidate to one location)
-- **Incomplete Sections** - Placeholder or stub documentation
+Recherchez :
+- **Décalages d'état des fonctionnalités** - La documentation dit « pas encore implémenté » mais le code existe
+- **Dérive architecturale** - La documentation décrit d'anciennes approches remplacées par de nouvelles décisions
+- **Fonctionnalités manquantes** - Nouvelles fonctionnalités non documentées
+- **Références croisées cassées** - Liens vers des fichiers renommés/supprimés
+- **Information dupliquée** - Même contenu à plusieurs endroits (consolider en un seul emplacement)
+- **Sections incomplètes** - Documentation placeholder ou ébauche
 
-### Step 3: Update Documentation
+### Étape 3 : Mettre à Jour la Documentation
 
-Follow these principles:
-1. **Single Source of Truth** - Information should exist in one canonical location
-2. **Cross-Reference** - Link to canonical docs rather than duplicating content
-3. **Transitional States** - Document both current and target states during migrations
-4. **Clear Status** - Mark features/approaches as current, deprecated, or planned
+Suivez ces principes :
+1. **Source unique de vérité** - L'information ne doit exister qu'à un seul emplacement canonique
+2. **Références croisées** - Liez vers la documentation canonique plutôt que de dupliquer le contenu
+3. **États de transition** - Documentez à la fois l'état actuel et l'état cible pendant les migrations
+4. **Statut clair** - Marquez les fonctionnalités/approches comme actuelles, dépréciées ou planifiées
 
-#### API Documentation Maintenance
+#### Maintenance de la Documentation API
 
-When backend endpoints change, ensure API documentation stays current:
+Lorsque les endpoints backend changent, assurez-vous que la documentation API reste à jour :
 
-**After adding/modifying endpoints:**
-1. Update schema definitions (e.g., Zod schemas, database models)
-2. Add validation middleware to new endpoints  
-3. Regenerate documentation using automated tools
-4. Update LLM-optimized API context if new patterns emerge
-5. Test LLM integration with updated docs (see `documentation/processes/LLM_INTEGRATION.md`)
+**Après l'ajout/modification d'endpoints :**
+1. Mettre à jour les définitions de schéma (par ex., schémas Zod, modèles de base de données)
+2. Ajouter le middleware de validation aux nouveaux endpoints
+3. Régénérer la documentation à l'aide d'outils automatisés
+4. Mettre à jour le contexte API optimisé pour les LLM si de nouveaux patterns émergent
+5. Tester l'intégration LLM avec la documentation mise à jour (voir `documentation/processes/LLM_INTEGRATION.md`)
 
-**After frontend integration:**
-1. Update frontend pattern documentation with new approaches
-2. Add examples to project-specific LLM integration docs
-3. Document any new TypeScript or framework patterns
+**Après l'intégration frontend :**
+1. Mettre à jour la documentation des patterns frontend avec les nouvelles approches
+2. Ajouter des exemples à la documentation d'intégration LLM spécifique au projet
+3. Documenter tout nouveau pattern TypeScript ou framework
 
-### Step 4: Suggest any potentially missing/obsolete documents to the user
+### Étape 4 : Suggérer tout document potentiellement manquant/obsolète à l'utilisateur
 
-(If the user agrees, then add/remove accordingly).
+(Si l'utilisateur est d'accord, ajoutez/supprimez en conséquence).
 
-### Step 5: Update project configuration documentation if needed
+### Étape 5 : Mettre à jour la documentation de configuration du projet si nécessaire
 
-Consider whether changes affect essential project configuration or AI agent context:
-- New build commands or debugging tools
-- Architectural changes affecting project structure
-- New documentation requiring signposts
+Vérifiez si les modifications affectent la configuration essentielle du projet ou le contexte des agents IA :
+- Nouvelles commandes de build ou outils de débogage
+- Modifications architecturales affectant la structure du projet
+- Nouvelle documentation nécessitant des signalisations
 
-#### Common Update Patterns
+#### Patterns de Mise à Jour Courants
 
-**Feature Implementation Status**
+**État d'Implémentation des Fonctionnalités**
 ```markdown
-# Before
-**Missing Features**
-- API integration not yet implemented
-- Data processing not built
+# Avant
+**Fonctionnalités Manquantes**
+- Intégration API pas encore implémentée
+- Traitement des données non construit
 
-# After  
-**Implemented Features**
-- API integration with external service ✓
-- Data processing with advanced filtering ✓
+# Après
+**Fonctionnalités Implémentées**
+- Intégration API avec service externe ✓
+- Traitement des données avec filtrage avancé ✓
 
-**Planned Features**
-- File upload functionality
-- User management
+**Fonctionnalités Planifiées**
+- Téléversement de fichiers
+- Gestion des utilisateurs
 ```
 
-**Architectural Changes**
+**Modifications Architecturales**
 ```markdown
-# Add transitional documentation
-**Current State**: Code uses component-based architecture
-**Target State**: Modular service architecture (see ARCHITECTURE.md)
-**Migration Status**: Schema exists, code needs updating
+# Ajouter la documentation de transition
+**État Actuel** : Le code utilise une architecture basée sur les composants
+**État Cible** : Architecture modulaire de services (voir ARCHITECTURE.md)
+**État de la Migration** : Le schéma existe, le code doit être mis à jour
 ```
 
-**Cross-References**
+**Références Croisées**
 ```markdown
-# Instead of duplicating configuration info
-see `documentation/reference/CONFIGURATION.md` for configuration architecture
+# Au lieu de dupliquer les informations de configuration
+voir `documentation/reference/CONFIGURATION.md` pour l'architecture de configuration
 ```
 
-### Step 6: Suggest a commit to the user (following `docs/GIT_COMMITS.md`)
+### Étape 6 : Suggérer un commit à l'utilisateur (en suivant `docs/GIT_COMMITS.md`)
 
-1. **Self-Review** - Re-read all changes for consistency
-2. **Test Links** - Verify cross-references work
-3. **Check Examples** - Ensure code examples match current implementation
-4. **Commit Message** - Follow `documentation/processes/GIT_COMMITS.md` guidelines
+1. **Auto-revue** - Relire toutes les modifications pour la cohérence
+2. **Tester les liens** - Vérifier que les références croisées fonctionnent
+3. **Vérifier les exemples** - S'assurer que les exemples de code correspondent à l'implémentation actuelle
+4. **Message de commit** - Suivre les directives de `documentation/processes/GIT_COMMITS.md`
 
-Example commit message:
+Exemple de message de commit :
 ```
-docs: update documentation to reflect current implementation
+docs: mise à jour de la documentation pour refléter l'implémentation actuelle
 
-- Update PROJECT_STATUS.md with implemented features
-- Reflect architecture transition in relevant docs
-- Add cross-references between related documentation
-- Update component documentation with current functionality
+- Mise à jour de PROJECT_STATUS.md avec les fonctionnalités implémentées
+- Reflet de la transition architecturale dans les documents pertinents
+- Ajout de références croisées entre documentations liées
+- Mise à jour de la documentation des composants avec la fonctionnalité actuelle
 ```
 
-## Documentation Quality Checklist
+## Checklist de Qualité de la Documentation
 
-Before committing, ensure:
-- [ ] No contradictions between documents
-- [ ] Status accurately reflects implementation
-- [ ] Cross-references are valid
-- [ ] Transitional states are clearly marked
-- [ ] "See also" sections are comprehensive
-- [ ] Examples match current code patterns
-- [ ] Technical details are accurate
+Avant de committer, assurez-vous que :
+- [ ] Aucune contradiction entre les documents
+- [ ] Le statut reflète fidèlement l'implémentation
+- [ ] Les références croisées sont valides
+- [ ] Les états de transition sont clairement marqués
+- [ ] Les sections « Voir aussi » sont complètes
+- [ ] Les exemples correspondent aux patterns de code actuels
+- [ ] Les détails techniques sont précis
 
-## Common Pitfalls
+## Pièges Courants
 
-1. **Over-updating** - Don't change accurate historical records in planning docs
-2. **Under-referencing** - Always add "see also" links for related topics
-3. **Duplication** - Resist copying content; link to canonical source
-4. **Vague Status** - Be specific about what's implemented vs planned
-5. **Missing Context** - Explain why architectural changes were made
+1. **Mise à jour excessive** - Ne modifiez pas les enregistrements historiques précis dans les documents de planification
+2. **Manque de références** - Ajoutez toujours des liens « voir aussi » pour les sujets connexes
+3. **Duplication** - Résistez à la copie de contenu ; liez vers la source canonique
+4. **Statut vague** - Soyez spécifique sur ce qui est implémenté vs planifié
+5. **Contexte manquant** - Expliquez pourquoi les modifications architecturales ont été faites

@@ -25,16 +25,16 @@ const SignUp = () => {
         submit: false,
       }}
       validationSchema={Yup.object().shape({
-        firstName: Yup.string().max(255).required("First name is required"),
-        lastName: Yup.string().max(255).required("Last name is required"),
+        firstName: Yup.string().max(255).required("Le prénom est requis"),
+        lastName: Yup.string().max(255).required("Le nom est requis"),
         email: Yup.string()
-          .email("Must be a valid email")
+          .email("L'email doit être valide")
           .max(255)
-          .required("Email is required"),
+          .required("L'email est requis"),
         password: Yup.string()
-          .min(12, "Must be at least 12 characters")
+          .min(12, "Doit contenir au moins 12 caractères")
           .max(255)
-          .required("Required"),
+          .required("Requis"),
       })}
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
         try {
@@ -46,7 +46,7 @@ const SignUp = () => {
           );
           navigate("/auth/sign-in");
         } catch (error: any) {
-          const message = error.message || "Something went wrong";
+          const message = error.message || "Une erreur est survenue";
 
           setStatus({ success: false });
           setErrors({ submit: message });
@@ -79,7 +79,7 @@ const SignUp = () => {
                   className="fs-3"
                 />
               </span>
-              Continue with Facebook
+              Continuer avec Facebook
             </Link>
             <Link
               to="/dashboard/default"
@@ -91,7 +91,7 @@ const SignUp = () => {
               >
                 <img src={brandGoogle} height="22" alt="Google" />
               </span>
-              Continue with Google
+              Continuer avec Google
             </Link>
             <Link
               to="/dashboard/default"
@@ -103,7 +103,7 @@ const SignUp = () => {
               >
                 <FontAwesomeIcon icon={faApple} fixedWidth className="fs-3" />
               </span>
-              Continue with Apple
+              Continuer avec Apple
             </Link>
           </div>
           <Row>
@@ -111,7 +111,7 @@ const SignUp = () => {
               <hr />
             </Col>
             <Col xs="auto" className="text-uppercase d-flex align-items-center">
-              Or
+              Ou
             </Col>
             <Col>
               <hr />
@@ -124,11 +124,11 @@ const SignUp = () => {
               </Alert>
             )}
             <Form.Group className="mb-3">
-              <Form.Label>First name</Form.Label>
+              <Form.Label>Prénom</Form.Label>
               <Form.Control
                 type="text"
                 name="firstName"
-                placeholder="First name"
+                placeholder="Prénom"
                 value={values.firstName}
                 isInvalid={Boolean(touched.firstName && errors.firstName)}
                 onBlur={handleBlur}
@@ -141,11 +141,11 @@ const SignUp = () => {
               )}
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Last name</Form.Label>
+              <Form.Label>Nom</Form.Label>
               <Form.Control
                 type="text"
                 name="lastName"
-                placeholder="Last name"
+                placeholder="Nom"
                 value={values.lastName}
                 isInvalid={Boolean(touched.lastName && errors.lastName)}
                 onBlur={handleBlur}
@@ -158,11 +158,11 @@ const SignUp = () => {
               )}
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Adresse email</Form.Label>
               <Form.Control
                 type="email"
                 name="email"
-                placeholder="Email address"
+                placeholder="Adresse email"
                 value={values.email}
                 isInvalid={Boolean(touched.email && errors.email)}
                 onBlur={handleBlur}
@@ -175,11 +175,11 @@ const SignUp = () => {
               )}
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Mot de passe</Form.Label>
               <Form.Control
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Mot de passe"
                 value={values.password}
                 isInvalid={Boolean(touched.password && errors.password)}
                 onBlur={handleBlur}
@@ -198,7 +198,7 @@ const SignUp = () => {
                 size="lg"
                 disabled={isSubmitting}
               >
-                Sign up
+                S'inscrire
               </Button>
             </div>
           </Form>

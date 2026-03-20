@@ -1,10 +1,10 @@
 {
-  "title": "AI-Assisted Development Practical",
-  "description": "Hands-on exercises for AI-assisted full-stack development using Claude Code with a React + Express + Prisma monorepo",
+  "title": "Atelier Pratique de Développement Assisté par IA",
+  "description": "Exercices pratiques de développement full-stack assisté par IA avec Claude Code, utilisant un monorepo React + Express + Prisma",
   "version": "1.0",
   "ports": [
-    { "env": "FRONTEND_PORT", "description": "Vite dev server port" },
-    { "env": "BACKEND_PORT", "description": "Express server port" }
+    { "env": "FRONTEND_PORT", "description": "Port du serveur de développement Vite" },
+    { "env": "BACKEND_PORT", "description": "Port du serveur Express" }
   ],
   "urls": [
     { "env": "VITE_API_BASE_URL", "port": "BACKEND_PORT", "path": "/api" },
@@ -13,10 +13,10 @@
   "setup": {
     "install": "npm install && npm run db:migrate:dev -w backend && npm run db:seed -w backend",
     "env": {
-      "FRONTEND_PORT": "Vite dev server port (default: 5000)",
-      "BACKEND_PORT": "Express server port (default: 5001)",
-      "VITE_API_BASE_URL": "Frontend→backend API URL (default: http://localhost:5001/api)",
-      "FRONTEND_URL": "Backend CORS origin for frontend (default: http://localhost:5000)"
+      "FRONTEND_PORT": "Port du serveur de développement Vite (par défaut : 5000)",
+      "BACKEND_PORT": "Port du serveur Express (par défaut : 5001)",
+      "VITE_API_BASE_URL": "URL de l'API backend pour le frontend (par défaut : http://localhost:5001/api)",
+      "FRONTEND_URL": "Origine CORS du frontend pour le backend (par défaut : http://localhost:5000)"
     },
     "requiredTools": [
       "node",
@@ -42,77 +42,77 @@
   "exercises": [
     {
       "id": "01-task-list",
-      "title": "Task List CRUD",
-      "description": "Complete a task management interface by wiring up create, update, and delete operations using AI assistance. The read functionality and backend API are already built.",
+      "title": "Liste de Tâches CRUD",
+      "description": "Complétez une interface de gestion de tâches en connectant les opérations de création, mise à jour et suppression avec l'aide de l'IA. La fonctionnalité de lecture et l'API backend sont déjà construites.",
       "directory": ".",
       "steps": [
         {
-          "title": "Explore the codebase",
-          "instruction": "Ask Claude: 'Explain how the task list exercise works — walk me through the frontend component, the API routes, and the database model'"
+          "title": "Explorer le code source",
+          "instruction": "Demandez à Claude : « Explique-moi comment fonctionne l'exercice de liste de tâches — guide-moi à travers le composant frontend, les routes API et le modèle de base de données »"
         },
         {
-          "title": "Connect the New Task button",
-          "instruction": "Ask Claude to help you connect the 'New Task' button in the ExerciseTaskList component to the existing POST /api/exercises/tasks endpoint, including a form for task name, description, and priority"
+          "title": "Connecter le bouton Nouvelle Tâche",
+          "instruction": "Demandez à Claude de vous aider à connecter le bouton « Nouvelle Tâche » dans le composant ExerciseTaskList au endpoint POST /api/exercises/tasks existant, avec un formulaire pour le nom, la description et la priorité de la tâche"
         },
         {
-          "title": "Implement task status updates",
-          "instruction": "Ask Claude to add the ability to toggle task status (e.g., mark as complete) by calling the PUT /api/exercises/tasks/:id endpoint"
+          "title": "Implémenter la mise à jour du statut des tâches",
+          "instruction": "Demandez à Claude d'ajouter la possibilité de basculer le statut d'une tâche (par ex., marquer comme terminée) en appelant le endpoint PUT /api/exercises/tasks/:id"
         },
         {
-          "title": "Implement task deletion",
-          "instruction": "Ask Claude to add a delete button to each task row that calls the DELETE /api/exercises/tasks/:id endpoint with a confirmation dialog"
+          "title": "Implémenter la suppression de tâches",
+          "instruction": "Demandez à Claude d'ajouter un bouton de suppression à chaque ligne de tâche qui appelle le endpoint DELETE /api/exercises/tasks/:id avec une boîte de dialogue de confirmation"
         },
         {
-          "title": "Add task editing",
-          "instruction": "Ask Claude to replace the 'View' button with an 'Edit' button that opens an inline form or modal for editing task details via the PUT endpoint"
+          "title": "Ajouter la modification de tâches",
+          "instruction": "Demandez à Claude de remplacer le bouton « Voir » par un bouton « Modifier » qui ouvre un formulaire en ligne ou une modale pour modifier les détails de la tâche via le endpoint PUT"
         }
       ]
     },
     {
       "id": "02-analytics-chart",
-      "title": "Analytics Chart",
-      "description": "Fetch monthly analytics data from the backend API and visualize it using a charting library. You'll need to discover the API endpoint and choose how to display the data — all with AI assistance.",
+      "title": "Graphique d'Analytique",
+      "description": "Récupérez les données analytiques mensuelles depuis l'API backend et visualisez-les à l'aide d'une bibliothèque de graphiques. Vous devrez découvrir le endpoint API et choisir comment afficher les données — le tout avec l'aide de l'IA.",
       "directory": ".",
       "steps": [
         {
-          "title": "Discover the API",
-          "instruction": "Ask Claude: 'I need to display analytics data in the AnalyticsChart exercise. Can you find the backend API endpoint that serves monthly analytics data and explain what data it returns?'"
+          "title": "Découvrir l'API",
+          "instruction": "Demandez à Claude : « Je dois afficher des données analytiques dans l'exercice AnalyticsChart. Peux-tu trouver le endpoint API backend qui fournit les données analytiques mensuelles et m'expliquer quelles données il renvoie ? »"
         },
         {
-          "title": "Fetch the data",
-          "instruction": "Ask Claude to add a useEffect hook to the AnalyticsChartExercise component that fetches the analytics data from the API endpoint and stores it in state"
+          "title": "Récupérer les données",
+          "instruction": "Demandez à Claude d'ajouter un hook useEffect au composant AnalyticsChartExercise qui récupère les données analytiques depuis le endpoint API et les stocke dans l'état"
         },
         {
-          "title": "Render the chart",
-          "instruction": "Ask Claude: 'Look at the example charts in the Example Layouts section of this app and help me implement a similar chart in the AnalyticsChartExercise component to display page views and total visits over time'"
+          "title": "Afficher le graphique",
+          "instruction": "Demandez à Claude : « Regarde les graphiques d'exemple dans la section Mises en page d'exemple de cette application et aide-moi à implémenter un graphique similaire dans le composant AnalyticsChartExercise pour afficher les pages vues et les visites totales dans le temps »"
         },
         {
-          "title": "Enhance the visualisation",
-          "instruction": "Ask Claude to improve the chart with additional metrics, better formatting, or interactive features like tooltips and legends"
+          "title": "Améliorer la visualisation",
+          "instruction": "Demandez à Claude d'améliorer le graphique avec des métriques supplémentaires, un meilleur formatage ou des fonctionnalités interactives comme des infobulles et des légendes"
         }
       ]
     },
     {
       "id": "03-llm-query",
-      "title": "LLM Integration",
-      "description": "Build a full-stack LLM query interface — create a backend API endpoint that calls an LLM provider, wire it to the frontend form, and add model selection. This exercise covers API design, SDK integration, and UI development.",
+      "title": "Intégration LLM",
+      "description": "Construisez une interface complète de requête LLM — créez un endpoint API backend qui appelle un fournisseur LLM, connectez-le au formulaire frontend et ajoutez la sélection de modèle. Cet exercice couvre la conception d'API, l'intégration de SDK et le développement d'interface utilisateur.",
       "directory": ".",
       "steps": [
         {
-          "title": "Plan the implementation",
-          "instruction": "Ask Claude: 'I need to implement the LLM Query exercise. Look at the existing LlmQuery component and help me create a plan for building the backend endpoint and connecting it to the frontend'"
+          "title": "Planifier l'implémentation",
+          "instruction": "Demandez à Claude : « Je dois implémenter l'exercice LLM Query. Regarde le composant LlmQuery existant et aide-moi à créer un plan pour construire le endpoint backend et le connecter au frontend »"
         },
         {
-          "title": "Create the backend endpoint",
-          "instruction": "Ask Claude to create a new API endpoint at POST /api/llm/query that accepts a user query, calls an LLM provider (e.g., Anthropic Claude API), and returns the response. Follow the existing backend patterns for routes, controllers, and services"
+          "title": "Créer le endpoint backend",
+          "instruction": "Demandez à Claude de créer un nouveau endpoint API à POST /api/llm/query qui accepte une requête utilisateur, appelle un fournisseur LLM (par ex., l'API Anthropic Claude) et renvoie la réponse. Suivez les patterns backend existants pour les routes, contrôleurs et services"
         },
         {
-          "title": "Connect the frontend",
-          "instruction": "Ask Claude to update the handleSubmit function in the LlmQuery component to call your new backend endpoint and display the LLM's response below the form, including loading and error states"
+          "title": "Connecter le frontend",
+          "instruction": "Demandez à Claude de mettre à jour la fonction handleSubmit dans le composant LlmQuery pour appeler votre nouveau endpoint backend et afficher la réponse du LLM sous le formulaire, avec gestion des états de chargement et d'erreur"
         },
         {
-          "title": "Add model selection",
-          "instruction": "Ask Claude to add a dropdown to the LLM Query UI that lets the user select which model to use, and pass that selection to the backend endpoint"
+          "title": "Ajouter la sélection de modèle",
+          "instruction": "Demandez à Claude d'ajouter un menu déroulant à l'interface LLM Query qui permet à l'utilisateur de sélectionner le modèle à utiliser, et de transmettre cette sélection au endpoint backend"
         }
       ]
     }

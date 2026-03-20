@@ -3,9 +3,9 @@ import { PrismaClient, TaskPriority, TaskStatus } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const seedTasks = [
-  // Upcoming Tasks (from todoTasks)
+  // Tâches à venir (depuis todoTasks)
   {
-    name: "Improve email marketing strategy",
+    name: "Améliorer la stratégie d'email marketing",
     assignedToName: "Ashley Briggs",
     assignedToAvatar: "/assets/img/avatars/avatar-5.jpg", // Use generic path
     dueDate: new Date("2024-08-01T00:00:00Z"), // Use ISO format or Date object
@@ -13,7 +13,7 @@ const seedTasks = [
     status: TaskStatus.UPCOMING,
   },
   {
-    name: "Develop new product video",
+    name: "Développer une nouvelle vidéo produit",
     assignedToName: "Carl Jenkins",
     assignedToAvatar: "/assets/img/avatars/avatar-2.jpg",
     dueDate: new Date("2024-07-15T00:00:00Z"),
@@ -21,16 +21,16 @@ const seedTasks = [
     status: TaskStatus.UPCOMING,
   },
   {
-    name: "Conduct user interviews for new feature",
+    name: "Mener des entretiens utilisateurs pour la nouvelle fonctionnalité",
     assignedToName: "Bertha Martin",
     assignedToAvatar: "/assets/img/avatars/avatar-3.jpg",
     dueDate: new Date("2024-06-20T00:00:00Z"),
     priority: TaskPriority.LOW,
     status: TaskStatus.UPCOMING,
   },
-  // In Progress Tasks
+  // Tâches en cours
   {
-    name: "Implement new analytics tracking",
+    name: "Implémenter le nouveau suivi analytique",
     assignedToName: "Carl Jenkins",
     assignedToAvatar: "/assets/img/avatars/avatar-2.jpg",
     dueDate: new Date("2024-07-01T00:00:00Z"),
@@ -38,7 +38,7 @@ const seedTasks = [
     status: TaskStatus.IN_PROGRESS,
   },
   {
-    name: "Design new marketing campaign",
+    name: "Concevoir une nouvelle campagne marketing",
     assignedToName: "Bertha Martin",
     assignedToAvatar: "/assets/img/avatars/avatar-3.jpg",
     dueDate: new Date("2024-08-15T00:00:00Z"),
@@ -46,16 +46,16 @@ const seedTasks = [
     status: TaskStatus.IN_PROGRESS,
   },
   {
-    name: "Conduct A/B testing on landing page",
+    name: "Réaliser des tests A/B sur la page d'accueil",
     assignedToName: "Ashley Briggs",
     assignedToAvatar: "/assets/img/avatars/avatar-5.jpg",
     dueDate: new Date("2024-06-30T00:00:00Z"),
     priority: TaskPriority.LOW,
     status: TaskStatus.IN_PROGRESS,
   },
-  // Completed Tasks
+  // Tâches terminées
   {
-    name: "Optimize website performance",
+    name: "Optimiser les performances du site web",
     assignedToName: "Bertha Martin",
     assignedToAvatar: "/assets/img/avatars/avatar-3.jpg",
     dueDate: new Date("2024-06-15T00:00:00Z"),
@@ -63,7 +63,7 @@ const seedTasks = [
     status: TaskStatus.COMPLETED,
   },
   {
-    name: "Develop mobile app prototype",
+    name: "Développer le prototype de l'application mobile",
     assignedToName: "Ashley Briggs",
     assignedToAvatar: "/assets/img/avatars/avatar-5.jpg",
     dueDate: new Date("2024-08-10T00:00:00Z"),
@@ -71,7 +71,7 @@ const seedTasks = [
     status: TaskStatus.COMPLETED,
   },
   {
-    name: "Conduct user research interviews",
+    name: "Mener des entretiens de recherche utilisateur",
     assignedToName: "Ashley Briggs",
     assignedToAvatar: "/assets/img/avatars/avatar-5.jpg",
     dueDate: new Date("2024-07-20T00:00:00Z"),
@@ -81,21 +81,21 @@ const seedTasks = [
 ];
 
 async function main() {
-  console.log(`Start seeding ...`);
+  console.log(`Début du seeding ...`);
 
-  // Clear existing data
-  console.log(`Deleting existing tasks...`);
+  // Supprimer les données existantes
+  console.log(`Suppression des tâches existantes...`);
   await prisma.exampleTask.deleteMany({});
-  console.log(`Existing tasks deleted.`);
+  console.log(`Tâches existantes supprimées.`);
 
-  // Create new tasks
-  console.log(`Creating seed tasks...`);
+  // Créer les nouvelles tâches
+  console.log(`Création des tâches de seed...`);
   const result = await prisma.exampleTask.createMany({
     data: seedTasks,
   });
-  console.log(`Created ${result.count} tasks.`);
+  console.log(`${result.count} tâches créées.`);
 
-  console.log('Seeding monthly analytics data...');
+  console.log('Seeding des données analytiques mensuelles...');
   const analyticsData = [
     { month: 1, year: 2024, sessionDuration: 10, pageViews: 5000, totalVisits: 2000 },
     { month: 2, year: 2024, sessionDuration: 11, pageViews: 4550, totalVisits: 2250 },
@@ -111,12 +111,12 @@ async function main() {
     { month: 12, year: 2024, sessionDuration: 12, pageViews: 5600, totalVisits: 3500 },
   ];
 
-  // Clear existing analytics data first to ensure consistency if the seed data changes
-  console.log('Deleting existing monthly analytics data...');
-  await prisma.monthlyAnalytics.deleteMany({}); 
-  console.log('Existing monthly analytics data deleted.');
+  // Supprimer d'abord les données analytiques existantes pour assurer la cohérence si les données de seed changent
+  console.log('Suppression des données analytiques mensuelles existantes...');
+  await prisma.monthlyAnalytics.deleteMany({});
+  console.log('Données analytiques mensuelles existantes supprimées.');
 
-  console.log('Creating monthly analytics data...');
+  console.log('Création des données analytiques mensuelles...');
   for (const data of analyticsData) {
     await prisma.monthlyAnalytics.upsert({
       where: { month_year: { month: data.month, year: data.year } }, // Using the @@unique constraint
@@ -124,9 +124,9 @@ async function main() {
       create: data, // Create if not exists
     });
   }
-  console.log(`Monthly analytics data seeded for ${analyticsData.length} months.`);
+  console.log(`Données analytiques mensuelles peuplées pour ${analyticsData.length} mois.`);
 
-  console.log(`Seeding finished.`);
+  console.log(`Seeding terminé.`);
 }
 
 main()

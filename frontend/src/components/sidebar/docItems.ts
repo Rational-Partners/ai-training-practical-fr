@@ -15,12 +15,12 @@ const gettingStartedSection = [
   {
     href: "/docs/introduction",
     icon: Info,
-    title: "Welcome",
+    title: "Bienvenue",
   },
   {
     href: "/docs/getting-started",
     icon: Code,
-    title: "Getting Started",
+    title: "Pour Commencer",
   },
 ] as SidebarItemsType[];
 
@@ -28,12 +28,12 @@ const developmentSection = [
   {
     href: "/docs/routing",
     icon: ArrowRightCircle,
-    title: "Routing",
+    title: "Routage",
   },
   {
     href: "/docs/auth",
     icon: Users,
-    title: "Authentication",
+    title: "Authentification",
     children: [
       {
         href: "/docs/auth/auth0",
@@ -56,17 +56,17 @@ const developmentSection = [
   {
     href: "/docs/guards",
     icon: Shield,
-    title: "Guards",
+    title: "Gardes",
   },
   {
     href: "/docs/api-calls",
     icon: ArrowRightCircle,
-    title: "API Calls",
+    title: "Appels API",
   },
   {
     href: "/docs/environment-variables",
     icon: ArrowRightCircle,
-    title: "Environment Variables",
+    title: "Variables d'Environnement",
   },
   {
     href: "/docs/redux",
@@ -76,7 +76,7 @@ const developmentSection = [
   {
     href: "/docs/internationalization",
     icon: Globe,
-    title: "Internationalization",
+    title: "Internationalisation",
   },
   {
     href: "/docs/eslint-and-prettier",
@@ -86,12 +86,12 @@ const developmentSection = [
   {
     href: "/docs/deployment",
     icon: ArrowRightCircle,
-    title: "Deployment",
+    title: "Déploiement",
   },
   {
     href: "/docs/migrating-to-next-js",
     icon: ArrowRightCircle,
-    title: "Migrating to Next.js",
+    title: "Migration vers Next.js",
   },
 ] as SidebarItemsType[];
 
@@ -104,22 +104,22 @@ const helpSection = [
   {
     href: "/docs/changelog",
     icon: List,
-    title: "Changelog",
+    title: "Journal des Modifications",
     badge: "v4.0.1",
   },
 ] as SidebarItemsType[];
 
 const navItems = [
   {
-    title: "Getting Started",
+    title: "Pour Commencer",
     pages: gettingStartedSection,
   },
   {
-    title: "Development",
+    title: "Développement",
     pages: developmentSection,
   },
   {
-    title: "Help",
+    title: "Aide",
     pages: helpSection,
   },
 ];

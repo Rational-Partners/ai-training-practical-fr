@@ -1,52 +1,52 @@
-# Plan: Task Example API Implementation
+# Plan : Implémentation de l'API Exemple de Tâches
 
-This document outlines the phases and steps involved in creating the Task Management example application, including both frontend UI setup and backend API development.
+Ce document décrit les phases et étapes impliquées dans la création de l'application exemple de gestion de tâches, incluant la configuration de l'interface frontend et le développement de l'API backend.
 
-## Phase 1: Frontend Setup (Replicating Task List UI)
+## Phase 1 : Configuration Frontend (Reproduction de l'interface de liste de tâches)
 
-- [x] Analyze original `TasksList` component (`frontend/src/pages/apps/TasksList.tsx`)
-- [x] Create new directory structure (`frontend/src/pages/examples/tasks/`)
-- [x] Create new component file (`frontend/src/pages/examples/tasks/ExampleTaskList.tsx`)
-- [x] Copy content from `TasksList` to `ExampleTaskList` and rename component
-- [x] Create new route `/examples/tasks/list` in `frontend/src/routes.tsx`
-- [x] Add initial sidebar link (under "Examples" > "Example Features" dropdown)
-- [x] Simplify sidebar link (remove dropdown, place "Task List" directly under "Examples")
+- [x] Analyser le composant original `TasksList` (`frontend/src/pages/apps/TasksList.tsx`)
+- [x] Créer la nouvelle structure de répertoires (`frontend/src/pages/examples/tasks/`)
+- [x] Créer le nouveau fichier de composant (`frontend/src/pages/examples/tasks/ExampleTaskList.tsx`)
+- [x] Copier le contenu de `TasksList` vers `ExampleTaskList` et renommer le composant
+- [x] Créer la nouvelle route `/examples/tasks/list` dans `frontend/src/routes.tsx`
+- [x] Ajouter le lien initial dans la barre latérale (sous "Exemples" > menu déroulant "Fonctionnalités d'Exemple")
+- [x] Simplifier le lien de la barre latérale (supprimer le menu déroulant, placer "Liste de Tâches" directement sous "Exemples")
 
-## Phase 2: Backend Database Setup
+## Phase 2 : Configuration de la Base de Données Backend
 
-- [x] Define Prisma schema for `ExampleTask` model and `TaskStatus`/`TaskPriority` enums
-- [x] Implement Prisma schema in `backend/prisma/schema.prisma`
-- [x] Create seed script `backend/prisma/seed.ts` with initial data
-- [x] Configure `backend/package.json` (`prisma.seed` entry) for seeding
-- [x] Run initial database migration (`npx prisma migrate dev`)
-- [x] Run database seed script (`npx prisma db seed`)
-- [x] Update root `README.md` with migration and seed steps
-- [x] Update `docs/QUICKSTART.md` with migration and seed steps
-- [x] Add `db:seed` npm script alias to `backend/package.json`
+- [x] Définir le schéma Prisma pour le modèle `ExampleTask` et les enums `TaskStatus`/`TaskPriority`
+- [x] Implémenter le schéma Prisma dans `backend/prisma/schema.prisma`
+- [x] Créer le script de seed `backend/prisma/seed.ts` avec les données initiales
+- [x] Configurer `backend/package.json` (entrée `prisma.seed`) pour le seeding
+- [x] Exécuter la migration initiale de la base de données (`npx prisma migrate dev`)
+- [x] Exécuter le script de seed de la base de données (`npx prisma db seed`)
+- [x] Mettre à jour le `README.md` racine avec les étapes de migration et de seed
+- [x] Mettre à jour `docs/QUICKSTART.md` avec les étapes de migration et de seed
+- [x] Ajouter l'alias de script npm `db:seed` dans `backend/package.json`
 
-## Phase 3: Backend API Implementation (Read Operations)
+## Phase 3 : Implémentation de l'API Backend (Opérations de Lecture)
 
-- [x] Create placeholder files for Repository, Service, Controller, and Routes
-- [x] Implement Repository functions (`findTasks`, `findTaskById`) in `exampleTask.repository.ts`
-- [x] Implement Service functions (`getAllTasks`, `getTaskById`) in `exampleTask.service.ts`
-- [x] Implement Controller functions (`handleGetAllTasks`, `handleGetTaskById`) in `exampleTask.controller.ts`
-- [x] Implement `asyncHandler` utility in `backend/src/utils/asyncHandler.ts`
-- [x] Implement Routes (`GET /`, `GET /:id`) using `asyncHandler` in `exampleTask.routes.ts`
-- [x] Integrate `exampleTaskRoutes` into `backend/src/server.ts` under `/api/examples/tasks`
+- [x] Créer les fichiers placeholder pour Repository, Service, Controller et Routes
+- [x] Implémenter les fonctions Repository (`findTasks`, `findTaskById`) dans `exampleTask.repository.ts`
+- [x] Implémenter les fonctions Service (`getAllTasks`, `getTaskById`) dans `exampleTask.service.ts`
+- [x] Implémenter les fonctions Controller (`handleGetAllTasks`, `handleGetTaskById`) dans `exampleTask.controller.ts`
+- [x] Implémenter l'utilitaire `asyncHandler` dans `backend/src/utils/asyncHandler.ts`
+- [x] Implémenter les Routes (`GET /`, `GET /:id`) avec `asyncHandler` dans `exampleTask.routes.ts`
+- [x] Intégrer `exampleTaskRoutes` dans `backend/src/server.ts` sous `/api/examples/tasks`
 
-## Phase 4: Backend API Implementation (Write Operations)
+## Phase 4 : Implémentation de l'API Backend (Opérations d'Écriture)
 
-- [x] Implement Repository functions (`createTask`, `updateTask`, `deleteTask`)
-- [x] Implement Service functions (`createTask`, `updateTask`, `deleteTask`)
-- [x] Add input validation for POST/PUT requests (e.g., using `express-validator`)
-- [x] Implement Controller functions (`handleCreateTask`, `handleUpdateTask`, `handleDeleteTask`)
-- [x] Implement Routes (`POST /`, `PUT /:id`, `DELETE /:id`)
+- [x] Implémenter les fonctions Repository (`createTask`, `updateTask`, `deleteTask`)
+- [x] Implémenter les fonctions Service (`createTask`, `updateTask`, `deleteTask`)
+- [x] Ajouter la validation des entrées pour les requêtes POST/PUT (par ex., avec `express-validator`)
+- [x] Implémenter les fonctions Controller (`handleCreateTask`, `handleUpdateTask`, `handleDeleteTask`)
+- [x] Implémenter les Routes (`POST /`, `PUT /:id`, `DELETE /:id`)
 
-## Phase 5: Frontend Integration
+## Phase 5 : Intégration Frontend
 
-- [x] Refactor `ExampleTaskList.tsx` to fetch data from the `/api/examples/tasks` endpoint
-- [x] Implement state management for tasks in the frontend component
-- [ ] Connect frontend UI actions (e.g., 'New Task' button) to POST endpoint
-- [ ] Implement functionality to update task status via PUT endpoint (mark task as complete/not complete)
-- [ ] Implement functionality to delete tasks via DELETE endpoint 
-- [ ] Allow for a task to be edited (removing the view button)
+- [x] Refactorer `ExampleTaskList.tsx` pour récupérer les données depuis le endpoint `/api/examples/tasks`
+- [x] Implémenter la gestion d'état pour les tâches dans le composant frontend
+- [ ] Connecter les actions de l'interface (par ex., bouton « Nouvelle Tâche ») au endpoint POST
+- [ ] Implémenter la fonctionnalité de mise à jour du statut de tâche via le endpoint PUT (marquer comme terminée/non terminée)
+- [ ] Implémenter la fonctionnalité de suppression de tâches via le endpoint DELETE
+- [ ] Permettre la modification d'une tâche (en remplaçant le bouton voir)

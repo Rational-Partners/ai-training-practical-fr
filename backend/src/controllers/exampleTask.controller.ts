@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client'; // Import Prisma for error handling
 import * as TaskService from '../services/exampleTask.service';
 
 /**
- * Handles fetching all tasks, potentially filtered by status.
+ * Gère la récupération de toutes les tâches, potentiellement filtrées par statut.
  */
 export const handleGetAllTasks = async (
   req: Request,
@@ -12,10 +12,10 @@ export const handleGetAllTasks = async (
   next: NextFunction
 ) => {
   try {
-    // Extract status from query parameters
+    // Extraire le statut des paramètres de requête
     const statusQuery = req.query.status as string | undefined;
 
-    // Validate and cast status query param to TaskStatus enum
+    // Valider et convertir le paramètre de requête statut vers l'enum TaskStatus
     let status: TaskStatus | undefined = undefined;
     if (statusQuery && Object.values(TaskStatus).includes(statusQuery as TaskStatus)) {
       status = statusQuery as TaskStatus;
@@ -24,12 +24,12 @@ export const handleGetAllTasks = async (
     const tasks = await TaskService.getAllTasks(status);
     res.json(tasks);
   } catch (error) {
-    next(error); // Pass errors to the central error handler
+    next(error); // Transmettre les erreurs au gestionnaire d'erreurs central
   }
 };
 
 /**
- * Handles fetching a single task by its ID.
+ * Gère la récupération d'une tâche unique par son ID.
  */
 export const handleGetTaskById = async (
   req: Request,
@@ -37,11 +37,11 @@ export const handleGetTaskById = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params; // Extract ID from URL parameters
+    const { id } = req.params; // Extraire l'ID des paramètres d'URL
     const task = await TaskService.getTaskById(id);
 
     if (!task) {
-      return res.status(404).json({ message: 'Task not found' });
+      return res.status(404).json({ message: 'Tâche non trouvée' });
     }
 
     res.json(task);
@@ -51,7 +51,7 @@ export const handleGetTaskById = async (
 };
 
 /**
- * Handles creating a new task.
+ * Gère la création d'une nouvelle tâche.
  */
 export const handleCreateTask = async (
   req: Request,
@@ -59,7 +59,7 @@ export const handleCreateTask = async (
   next: NextFunction
 ) => {
   try {
-    // Validation is handled by middleware
+    // La validation est gérée par le middleware
     const newTaskData = req.body; 
     const createdTask = await TaskService.createTask(newTaskData);
     res.status(201).json(createdTask);
@@ -69,7 +69,7 @@ export const handleCreateTask = async (
 };
 
 /**
- * Handles updating an existing task by its ID.
+ * Gère la mise à jour d'une tâche existante par son ID.
  */
 export const handleUpdateTask = async (
   req: Request,
@@ -80,9 +80,9 @@ export const handleUpdateTask = async (
     const { id } = req.params;
     const updateData = req.body;
 
-    // Basic check if updateData is empty
+    // Vérification basique si updateData est vide
     if (Object.keys(updateData).length === 0) {
-        return res.status(400).json({ message: 'No update data provided' });
+        return res.status(400).json({ message: 'Aucune donnée de mise à jour fournie' });
     }
 
     const updatedTask = await TaskService.updateTask(id, updateData);
@@ -94,14 +94,14 @@ export const handleUpdateTask = async (
   } catch (error) {
      // Handle Prisma's specific error for record not found during update/delete
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
-      return res.status(404).json({ message: 'Task not found' });
+      return res.status(404).json({ message: 'Tâche non trouvée' });
     }
     next(error);
   }
 };
 
 /**
- * Handles deleting a task by its ID.
+ * Gère la suppression d'une tâche par son ID.
  */
 export const handleDeleteTask = async (
   req: Request,
@@ -116,10 +116,10 @@ export const handleDeleteTask = async (
   } catch (error) {
      // Handle Prisma's specific error for record not found during update/delete
     if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
-      return res.status(404).json({ message: 'Task not found' });
+      return res.status(404).json({ message: 'Tâche non trouvée' });
     }
     next(error);
   }
 };
 
-// We will add handlers for POST, PUT, DELETE later 
+// Nous ajouterons les gestionnaires pour POST, PUT, DELETE plus tard 

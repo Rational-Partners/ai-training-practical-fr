@@ -40,9 +40,9 @@ const renderNavItems = (items: SidebarItemsType[]) => {
 const NavigationIndex = () => {
   return (
     <React.Fragment>
-      <Helmet title="Site Navigation" />
+      <Helmet title="Navigation du Site" />
       <Container fluid className="p-0">
-        <h1 className="h3 mb-3">Site Navigation</h1>
+        <h1 className="h3 mb-3">Navigation du Site</h1>
 
         <Row>
           {/* Iterate over the sections defined in sidebarItems (e.g., Navigation, Apps, Pages) */}

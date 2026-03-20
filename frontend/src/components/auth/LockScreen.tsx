@@ -12,21 +12,21 @@ const LockScreen = () => {
     <div className="mb-3">
       <Form onSubmit={() => navigate("/dashboard/default")}>
         <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Mot de passe</Form.Label>
           <Form.Control
             size="lg"
             type="password"
             name="password"
-            placeholder="Enter your password"
+            placeholder="Saisissez votre mot de passe"
           />
           <small>
-            <Link to="/auth/reset-password">Forgot password?</Link>
+            <Link to="/auth/reset-password">Mot de passe oublié ?</Link>
           </small>
         </Form.Group>
 
         <div className="d-grid gap-2 mt-3">
           <Button type="submit" variant="primary" size="lg">
-            Sign in
+            Se connecter
           </Button>
         </div>
       </Form>

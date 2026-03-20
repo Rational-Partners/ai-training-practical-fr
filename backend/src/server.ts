@@ -28,7 +28,7 @@ app.use(express.json()); // Parse JSON bodies (should come after CORS typically)
 app.use('/api/exercises/tasks', exerciseTaskRoutes); // Use updated variable name
 app.use('/api/analytics', analyticsRoutes); // Mount the analytics routes
 
-// Simple Health Check Route (Keep accessible at root)
+// Route de vérification de santé simple (Garder accessible à la racine)
 app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'UP' });
 });
@@ -36,15 +36,15 @@ app.get('/health', (req: Request, res: Response) => {
 // Placeholder for future routes
 // app.use('/api', mainApiRouter); // Example
 
-// Basic Error Handling Middleware (Example)
-// Place this *after* all routes
+// Middleware de gestion d'erreurs basique (Exemple)
+// Placer ceci *après* toutes les routes
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
-  // Check if the error has a specific status code, otherwise default to 500
+  // Vérifier si l'erreur a un code de statut spécifique, sinon utiliser 500 par défaut
   const statusCode = (err as any).statusCode || 500;
-  // Send a generic error message or customize based on error type
+  // Envoyer un message d'erreur générique ou personnaliser selon le type d'erreur
   res.status(statusCode).json({ 
-    message: err.message || 'Something broke!' 
+    message: err.message || 'Quelque chose s\'est cassé !' 
   });
 });
 

@@ -6,8 +6,8 @@ export const handleGetMonthlyAnalytics = async (req: Request, res: Response) => 
     const data = await AnalyticsService.getMonthlyAnalytics();
     res.status(200).json(data);
   } catch (error) {
-    // Check if the error is an instance of Error to safely access the message property
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    res.status(500).json({ message: 'Error fetching monthly analytics', error: errorMessage });
+    // Vérifier si l'erreur est une instance d'Error pour accéder en toute sécurité à la propriété message
+    const errorMessage = error instanceof Error ? error.message : 'Une erreur inconnue est survenue';
+    res.status(500).json({ message: 'Erreur lors de la récupération des analytiques mensuelles', error: errorMessage });
   }
 }; 

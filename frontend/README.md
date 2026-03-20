@@ -1,33 +1,33 @@
-# AppStack - React Admin & Dashboard Template
+# AppStack - Template d'Administration et de Tableau de Bord React
 
-This project is using [Vite](https://vitejs.dev/) to compile and serve files.
+Ce projet utilise [Vite](https://vitejs.dev/) pour compiler et servir les fichiers.
 
-## Prerequisites
+## Prérequis
 
-You'll need to have Node.js installed, downloadable at [https://nodejs.org/](https://nodejs.org/). The required version can be found in the `/.nvmrc` file in the project root. You can also use [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) to switch Node versions between different projects.
+Vous devez avoir Node.js installé, téléchargeable sur [https://nodejs.org/](https://nodejs.org/). La version requise se trouve dans le fichier `/.nvmrc` à la racine du projet. Vous pouvez également utiliser [nvm](https://github.com/creationix/nvm#installation) (macOS/Linux) ou [nvm-windows](https://github.com/coreybutler/nvm-windows#node-version-manager-nvm-for-windows) pour basculer entre les versions de Node selon les projets.
 
-## Quick Start
+## Démarrage Rapide
 
 ### `npm start`
 
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Lance l'application en mode développement.
+Ouvrez [http://localhost:3000](http://localhost:3000) pour la visualiser dans le navigateur.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+La page se rechargera si vous effectuez des modifications.
+Vous verrez également les erreurs de lint dans la console.
 
 ### `npm run build`
 
-Builds the app for production to the `dist` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Compile l'application pour la production dans le dossier `dist`.
+Elle regroupe correctement React en mode production et optimise le build pour les meilleures performances.
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+Le build est minifié et les noms de fichiers incluent les hashes.
+Votre application est prête à être déployée !
 
-See the section about [building for production](https://vitejs.dev/guide/build.html) for more information.
+Consultez la section sur le [build pour la production](https://vitejs.dev/guide/build.html) pour plus d'informations.
 
-## Learn More
+## En Savoir Plus
 
-You can learn more in the [Vite documentation](https://vitejs.dev/).
+Vous pouvez en apprendre davantage dans la [documentation Vite](https://vitejs.dev/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pour apprendre React, consultez la [documentation React](https://reactjs.org/).

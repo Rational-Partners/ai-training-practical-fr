@@ -7,26 +7,26 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 const AnalyticsChartExercise = () => {
   return (
     <React.Fragment>
-      <Helmet title="Analytics Chart Exercise" />
+      <Helmet title="Exercice Graphique d'Analytique" />
       <Container fluid className="p-0">
-        <h1 className="h3 mb-3">Analytics Chart Exercise</h1>
+        <h1 className="h3 mb-3">Exercice Graphique d'Analytique</h1>
 
         <Row>
-          <Col> {/* Use Col without size prop to take full width */} 
+          <Col> {/* Use Col without size prop to take full width */}
             <Alert variant="primary" className="alert-outline mb-4">
               <div className="alert-icon">
                 <FontAwesomeIcon icon={faInfoCircle} fixedWidth />
               </div>
               <div className="alert-message">
-                <strong>Exercise Task</strong>
+                <strong>Objectif de l'Exercice</strong>
                 <p className="mb-2">
-                  Your goal is to display the company's monthly website analytics data using a chart.
+                  Votre objectif est d'afficher les données analytiques mensuelles du site web de l'entreprise à l'aide d'un graphique.
                 </p>
                 <p className="mb-1">
-                  First, you need to fetch the data from the backend API endpoint. We have deliberately avoided giving you pointers to where this is as you can discover that using AI. 
+                  D'abord, vous devez récupérer les données depuis le endpoint de l'API backend. Nous avons délibérément évité de vous indiquer où il se trouve, car vous pouvez le découvrir en utilisant l'IA.
                 </p>
                 <p className="mb-0">
-                  Once you have the data, use a charting library to visualize it. You can choose which metrics to display (e.g., Page Views and Total Visits over time). There are example charts implemented in the <strong>Example Layouts</strong> section of this application that you can reference for implementation details. However, <strong>do not look at the example code directly</strong>. Instead, ask the AI assistant to look at the relevant example code and explain how to implement the chart based on those examples.
+                  Une fois que vous avez les données, utilisez une bibliothèque de graphiques pour les visualiser. Vous pouvez choisir quelles métriques afficher (par ex., Pages Vues et Visites Totales dans le temps). Il y a des graphiques d'exemple implémentés dans la section <strong>Mises en Page d'Exemple</strong> de cette application que vous pouvez utiliser comme référence pour les détails d'implémentation. Cependant, <strong>ne regardez pas le code d'exemple directement</strong>. À la place, demandez à l'assistant IA de regarder le code d'exemple pertinent et de vous expliquer comment implémenter le graphique en s'appuyant sur ces exemples.
                 </p>
               </div>
             </Alert>
@@ -37,13 +37,13 @@ const AnalyticsChartExercise = () => {
           <Col> {/* Use Col without size prop to take full width */} 
             <Card>
               <Card.Header>
-                <Card.Title>Monthly Analytics Chart</Card.Title>
-                <h6 className="card-subtitle text-muted">Display the fetched monthly analytics data here.</h6>
+                <Card.Title>Graphique Analytique Mensuel</Card.Title>
+                <h6 className="card-subtitle text-muted">Affichez ici les données analytiques mensuelles récupérées.</h6>
               </Card.Header>
               <Card.Body>
-                {/* Chart component will go here */}
+                {/* Le composant graphique ira ici */}
                 <div className="text-center">
-                  Chart placeholder
+                  Emplacement du graphique
                 </div>
               </Card.Body>
             </Card>

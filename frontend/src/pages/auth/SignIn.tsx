@@ -6,15 +6,15 @@ import SignIn from "../../components/auth/SignIn";
 
 const SignInPage = () => (
   <React.Fragment>
-    <Helmet title="Sign In" />
+    <Helmet title="Connexion" />
     <div className="text-center mt-4">
-      <h2>Welcome back!</h2>
-      <p className="lead">Sign in to your account to continue</p>
+      <h2>Bon retour !</h2>
+      <p className="lead">Connectez-vous à votre compte pour continuer</p>
     </div>
 
     <SignIn />
     <div className="text-center mt-3">
-      Don't have an account? <Link to="/auth/sign-up">Sign up</Link>
+      Vous n'avez pas de compte ? <Link to="/auth/sign-up">S'inscrire</Link>
     </div>
   </React.Fragment>
 );

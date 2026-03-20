@@ -28,7 +28,7 @@ async function waitForServers() {
   let backendReady = false;
   let frontendReady = false;
 
-  process.stdout.write('\n  Waiting for servers to start...');
+  process.stdout.write('\n  En attente du démarrage des serveurs...');
 
   while (Date.now() - start < TIMEOUT) {
     if (!backendReady) backendReady = await probe(BACKEND_PORT, '/health');
@@ -49,8 +49,8 @@ async function waitForServers() {
 const ready = await waitForServers();
 
 if (!ready) {
-  console.error('\n  Servers did not start within 30s.');
-  console.error('  Check logs: logs/backend.log, logs/frontend.log\n');
+  console.error('\n  Les serveurs n\'ont pas démarré dans les 30s.');
+  console.error('  Vérifiez les logs : logs/backend.log, logs/frontend.log\n');
   process.exit(1);
 }
 
@@ -64,7 +64,7 @@ const backendURL = `http://localhost:${BACKEND_PORT}/api`;
 
 const lines = [
   '',
-  '   App running:',
+  '   Application en cours :',
   '',
   `   \u2192 Local:    ${localURL}`,
 ];

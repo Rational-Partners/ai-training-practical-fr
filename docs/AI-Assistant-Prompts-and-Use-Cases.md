@@ -1,43 +1,43 @@
-# AI Assistant Prompts and Use Cases
+# Prompts et Cas d'Utilisation de l'Assistant IA
 
-This document provides examples of effective prompts and common use cases when interacting with the AI assistant within this project codebase.
+Ce document fournit des exemples de prompts efficaces et de cas d'utilisation courants lors de l'interaction avec l'assistant IA dans ce projet.
 
-## Getting Started
+## Pour Commencer
 
-- **Be Specific:** Clearly state your goal and provide context (filenames, function names, concepts).
-- **Provide Code (if applicable):** Use code blocks or attach relevant files.
-- **Iterate:** If the first response isn't perfect, provide feedback and refine your request.
+- **Soyez précis :** Énoncez clairement votre objectif et fournissez du contexte (noms de fichiers, noms de fonctions, concepts).
+- **Fournissez du code (si applicable) :** Utilisez des blocs de code ou joignez les fichiers pertinents.
+- **Itérez :** Si la première réponse n'est pas parfaite, donnez un retour et affinez votre demande.
 
-## Use Case Categories
+## Catégories de Cas d'Utilisation
 
-### 1. Code Generation & Modification
+### 1. Génération et Modification de Code
 
-*(Examples for creating new functions, components, tests, or modifying existing code...)*
+*(Exemples pour créer de nouvelles fonctions, composants, tests ou modifier du code existant...)*
 
-### 2. Debugging & Error Resolution
+### 2. Débogage et Résolution d'Erreurs
 
-*(Examples for diagnosing errors, understanding stack traces, finding bug sources...)*
+*(Exemples pour diagnostiquer des erreurs, comprendre les traces de pile, trouver les sources de bugs...)*
 
-### 3. Code Explanation & Understanding
+### 3. Explication et Compréhension du Code
 
-*(Examples for explaining complex logic, summarizing files, tracing data flow...)*
+*(Exemples pour expliquer une logique complexe, résumer des fichiers, tracer le flux de données...)*
 
-### 4. Refactoring & Optimization
+### 4. Refactoring et Optimisation
 
-*(Examples for improving code structure, readability, performance...)*
+*(Exemples pour améliorer la structure du code, la lisibilité, les performances...)*
 
 ### 5. Documentation
 
-*(Examples for generating documentation, explaining code for docs, creating doc templates...)*
+*(Exemples pour générer de la documentation, expliquer du code pour la documentation, créer des modèles de documentation...)*
 
-### 6. Planning & Strategy
+### 6. Planification et Stratégie
 
-*(Examples for outlining implementation steps, discussing architectural choices...)*
+*(Exemples pour définir les étapes d'implémentation, discuter des choix architecturaux...)*
 
-### 7. Database & Prisma
+### 7. Base de Données et Prisma
 
-*(Examples for generating migrations, writing schema, creating seed data, querying relations...)*
+*(Exemples pour générer des migrations, écrire des schémas, créer des données de seed, interroger des relations...)*
 
 ---
 
-*More examples will be added below.* 
+*D'autres exemples seront ajoutés ci-dessous.*

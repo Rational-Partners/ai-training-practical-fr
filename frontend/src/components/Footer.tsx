@@ -11,13 +11,13 @@ const Footer = () => (
               <span className="text-muted">Support</span>
             </li>
             <li className="list-inline-item">
-              <span className="text-muted">Help Center</span>
+              <span className="text-muted">Centre d'Aide</span>
             </li>
             <li className="list-inline-item">
-              <span className="text-muted">Privacy</span>
+              <span className="text-muted">Confidentialité</span>
             </li>
             <li className="list-inline-item">
-              <span className="text-muted">Terms of Service</span>
+              <span className="text-muted">Conditions d'Utilisation</span>
             </li>
           </ul>
         </Col>

@@ -6,11 +6,11 @@ import TwoFactor from "../../components/auth/TwoFactor";
 
 const TwoFactorPage = () => (
   <React.Fragment>
-    <Helmet title="TwoFactor" />
+    <Helmet title="Double Authentification" />
     <div className="text-center">
-      <h1 className="h2">Verify your email</h1>
+      <h1 className="h2">Vérifiez votre email</h1>
       <p className="lead">
-        Please enter the 6 digit code sent to{" "}
+        Veuillez saisir le code à 6 chiffres envoyé à{" "}
         <strong>chris.wood@gmail.com</strong>
       </p>
     </div>
@@ -18,7 +18,7 @@ const TwoFactorPage = () => (
     <TwoFactor />
 
     <div className="text-center">
-      Didn't receive a code? <Link to="/auth/2fa">Resend</Link>
+      Vous n'avez pas reçu de code ? <Link to="/auth/2fa">Renvoyer</Link>
     </div>
   </React.Fragment>
 );

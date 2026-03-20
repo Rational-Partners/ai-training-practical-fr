@@ -27,16 +27,16 @@ const NavbarUser = () => {
       <Dropdown.Menu>
         <Dropdown.Item>
           <User size={18} className="align-middle me-2" />
-          Profile
+          Profil
         </Dropdown.Item>
         <Dropdown.Item>
           <PieChart size={18} className="align-middle me-2" />
-          Analytics
+          Analytique
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item>Settings & Privacy</Dropdown.Item>
-        <Dropdown.Item>Help</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
+        <Dropdown.Item>Paramètres et Confidentialité</Dropdown.Item>
+        <Dropdown.Item>Aide</Dropdown.Item>
+        <Dropdown.Item>Se déconnecter</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

@@ -6,16 +6,16 @@ import LockScreen from "../../components/auth/LockScreen";
 
 const LockScreenPage = () => (
   <React.Fragment>
-    <Helmet title="LockScreen" />
+    <Helmet title="Écran de Verrouillage" />
     <div className="text-center">
-      <h1 className="h2">Welcome back, Chris!</h1>
-      <p className="lead">Enter your password to continue</p>
+      <h1 className="h2">Bon retour, Chris !</h1>
+      <p className="lead">Saisissez votre mot de passe pour continuer</p>
     </div>
 
     <LockScreen />
 
     <div className="text-center">
-      Not you? <Link to="/auth/sign-in">Sign out</Link>
+      Ce n'est pas vous ? <Link to="/auth/sign-in">Se déconnecter</Link>
     </div>
   </React.Fragment>
 );

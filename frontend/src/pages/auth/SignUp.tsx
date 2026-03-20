@@ -6,17 +6,17 @@ import SignUp from "../../components/auth/SignUp";
 
 const SignUpPage = () => (
   <React.Fragment>
-    <Helmet title="Sign Up" />
+    <Helmet title="Inscription" />
     <div className="text-center mt-4">
-      <h1 className="h2">Get started</h1>
+      <h1 className="h2">Commencer</h1>
       <p className="lead">
-        Start creating the best possible user experience for you customers.
+        Commencez à créer la meilleure expérience utilisateur possible pour vos clients.
       </p>
     </div>
 
     <SignUp />
     <div className="text-center mt-3">
-      Already have an account? <Link to="/auth/sign-in">Log in</Link>
+      Vous avez déjà un compte ? <Link to="/auth/sign-in">Se connecter</Link>
     </div>
   </React.Fragment>
 );

@@ -1,121 +1,121 @@
-# Project Guidelines
+# Directives du Projet
 
-## Workflow: Use Sub-Agents for Complex Tasks
+## Workflow : Utiliser des Sous-Agents pour les Tâches Complexes
 
-**Delegate work to specialized agents whenever possible.** This improves quality and reduces context exhaustion.
+**Déléguez le travail à des agents spécialisés autant que possible.** Cela améliore la qualité et réduit l'épuisement du contexte.
 
-### When to Delegate
+### Quand Déléguer
 
-| Task Type | Agent/Command | When to Use |
-|-----------|---------------|-------------|
-| Codebase exploration | `Explore` agent | Finding files, understanding patterns, answering "how does X work?" |
-| Deep subject research | `/research-deep` | Understanding a domain before planning (scientist/detective mode) |
-| Implementation planning | `/spec` | Before starting any non-trivial feature |
-| Executing approved plans | `/build` | After plan is approved, to orchestrate implementation |
-| Code review | `principal-code-reviewer` | After implementing significant code |
-| Git commits | `/commit` | When ready to commit changes |
-| Debugging production | `/debug-production` | Investigating production errors |
-| Research tasks | `general-purpose` agent | Multi-step research requiring tool use |
-| Web research | `/research` | Researching topics on the internet |
+| Type de Tâche | Agent/Commande | Quand Utiliser |
+|---------------|----------------|----------------|
+| Exploration du code | Agent `Explore` | Trouver des fichiers, comprendre des patterns, répondre à « comment fonctionne X ? » |
+| Recherche approfondie | `/research-deep` | Comprendre un domaine avant de planifier (mode scientifique/détective) |
+| Planification d'implémentation | `/spec` | Avant de commencer toute fonctionnalité non triviale |
+| Exécution de plans approuvés | `/build` | Après approbation du plan, pour orchestrer l'implémentation |
+| Revue de code | `principal-code-reviewer` | Après avoir implémenté du code significatif |
+| Commits Git | `/commit` | Quand prêt à committer les modifications |
+| Débogage en production | `/debug-production` | Investigation d'erreurs de production |
+| Tâches de recherche | Agent `general-purpose` | Recherche multi-étapes nécessitant l'utilisation d'outils |
+| Recherche web | `/research` | Recherche de sujets sur internet |
 
-### How to Delegate
+### Comment Déléguer
 
 ```
-# For exploration
-Task tool with subagent_type="Explore" - "Find all API endpoints that handle user authentication"
+# Pour l'exploration
+Outil Task avec subagent_type="Explore" - "Trouver tous les endpoints API qui gèrent l'authentification utilisateur"
 
-# For planning
-/spec - starts interactive planning session
+# Pour la planification
+/spec - démarre une session de planification interactive
 
-# For implementation
-/build - executes approved plan with specialized agents
+# Pour l'implémentation
+/build - exécute le plan approuvé avec des agents spécialisés
 ```
 
-### Key Principle
+### Principe Clé
 
-**Don't do manually what an agent can do better.** If you find yourself:
-- Searching through many files → Use Explore agent
-- Planning a multi-step implementation → Use /spec
-- Writing significant code → Follow with principal-code-reviewer
+**Ne faites pas manuellement ce qu'un agent peut faire mieux.** Si vous vous retrouvez à :
+- Chercher dans de nombreux fichiers → Utilisez l'agent Explore
+- Planifier une implémentation multi-étapes → Utilisez /spec
+- Écrire du code significatif → Faites suivre par principal-code-reviewer
 
-## Skills System
+## Système de Compétences
 
-Skills provide domain knowledge that's automatically applied based on context. Key skills:
+Les compétences fournissent des connaissances de domaine automatiquement appliquées selon le contexte. Compétences clés :
 
-| Skill | Applies When |
-|-------|--------------|
-| `portal-tailwind` | Working on portal components (tw- prefix required) |
-| `prisma-migrations` | Modifying database schema (migration required) |
-| `api-development` | Creating/modifying API endpoints |
-| `tdd-workflow` | Writing tests |
-| `git-commits` | Committing code |
-| `local-debugging` | Debugging local development issues |
-| `mcp-tools` | Using cclsp for refactoring, Playwright for testing, GitHub MCP |
+| Compétence | S'applique Quand |
+|------------|------------------|
+| `portal-tailwind` | Travail sur les composants portail (préfixe tw- requis) |
+| `prisma-migrations` | Modification du schéma de base de données (migration requise) |
+| `api-development` | Création/modification d'endpoints API |
+| `tdd-workflow` | Écriture de tests |
+| `git-commits` | Commits de code |
+| `local-debugging` | Débogage de problèmes de développement local |
+| `mcp-tools` | Utilisation de cclsp pour le refactoring, Playwright pour les tests, GitHub MCP |
 
-Skills are in `.claude/skills/` - read them for detailed guidance.
+Les compétences sont dans `.claude/skills/` - lisez-les pour des indications détaillées.
 
-## Core Rules
+## Règles Fondamentales
 
-### Server & Process Management
-- Never run `npm run dev` or start servers - user runs these separately
-- Never restart servers or kill processes without permission
-- Never run npm/npx commands without permission (except `prisma generate`)
+### Gestion des Serveurs et Processus
+- Ne jamais exécuter `npm run dev` ni démarrer de serveurs - l'utilisateur les lance séparément
+- Ne jamais redémarrer de serveurs ni tuer de processus sans permission
+- Ne jamais exécuter de commandes npm/npx sans permission (sauf `prisma generate`)
 
-### Code Quality
-- Focus on the specific problem - don't fix tangential issues
-- Make minimal, focused changes only
-- Never rewrite entire files without explicit instruction
-- Use built-in logging (`debug`), never `console.log`
-- Include debug logging behind development feature flags
+### Qualité du Code
+- Concentrez-vous sur le problème spécifique - ne corrigez pas les problèmes tangentiels
+- Faites uniquement des modifications minimales et ciblées
+- Ne réécrivez jamais des fichiers entiers sans instruction explicite
+- Utilisez le logging intégré (`debug`), jamais `console.log`
+- Incluez le logging de débogage derrière des feature flags de développement
 
-### Database Changes
-- **ALWAYS** create migrations when modifying schema.prisma
-- See `prisma-migrations` skill for complete workflow
-- Never make changes that could lose data without asking
+### Modifications de Base de Données
+- **TOUJOURS** créer des migrations lors de la modification de schema.prisma
+- Voir la compétence `prisma-migrations` pour le workflow complet
+- Ne jamais faire de modifications pouvant perdre des données sans demander
 
-### File Management
-- Never create random analysis/research files in source code directories
-- Project tracking docs (test checklists, implementation notes) go in `documentation/planning/current/`
-- Use `/tmp/` ONLY for truly ephemeral files (debug output, scratch files not needed later)
-- All permanent docs go in `documentation/` only when requested
+### Gestion des Fichiers
+- Ne jamais créer de fichiers d'analyse/recherche aléatoires dans les répertoires du code source
+- Les documents de suivi de projet (checklists de test, notes d'implémentation) vont dans `documentation/planning/current/`
+- Utilisez `/tmp/` UNIQUEMENT pour les fichiers véritablement éphémères (sortie de débogage, fichiers temporaires non nécessaires ultérieurement)
+- Toute documentation permanente va dans `documentation/` uniquement sur demande
 
-### Version Control
-- Never push to git without explicit permission
-- Never stage to git without explicit permission
-- Use `/commit` command for proper commit workflow
+### Contrôle de Version
+- Ne jamais pousser vers git sans permission explicite
+- Ne jamais stager vers git sans permission explicite
+- Utiliser la commande `/commit` pour le workflow de commit approprié
 
-### Testing & Deployment
-- Don't run tests automatically - ask user to run them
-- Never deploy without explicit permission
+### Tests et Déploiement
+- Ne pas exécuter les tests automatiquement - demander à l'utilisateur de les lancer
+- Ne jamais déployer sans permission explicite
 
-## Research Process
+## Processus de Recherche
 
-Before implementing anything non-trivial:
+Avant d'implémenter quoi que ce soit de non trivial :
 
-1. **Understand the domain** - use `/research-deep` for unfamiliar territory
-2. **Search the codebase thoroughly** - use Explore agent for complex searches
-3. **Create a detailed plan** - use `/spec` for significant features
-4. **Rate confidence level** - must be 95%+ before implementing
-5. **If under 95%**, continue researching and re-evaluate
-6. **Walk through thinking** step by step during implementation
+1. **Comprendre le domaine** - utiliser `/research-deep` pour un territoire inconnu
+2. **Rechercher dans le code source de manière approfondie** - utiliser l'agent Explore pour les recherches complexes
+3. **Créer un plan détaillé** - utiliser `/spec` pour les fonctionnalités significatives
+4. **Évaluer le niveau de confiance** - doit être à 95%+ avant d'implémenter
+5. **Si en dessous de 95%**, continuer la recherche et réévaluer
+6. **Détailler votre raisonnement** étape par étape pendant l'implémentation
 
-## Quick References
+## Références Rapides
 
-### Commands Available
-- `/workflow` - Quick reference for all commands and recommended flow
-- `/research-deep` - Deep subject matter investigation (scientist/detective mode)
-- `/spec` - Interactive planning for new features
-- `/build` - Execute approved implementation plans
-- `/commit` - Commit workflow with build verification
-- `/debug` - Debug local issues
-- `/debug-production` - Investigate production errors
-- `/catch-up` - Rebuild context from git history
-- `/standup` - Generate work summaries
-- `/retro` - Capture learnings from completed work
-- `/research` - Quick web research on a topic
+### Commandes Disponibles
+- `/workflow` - Référence rapide pour toutes les commandes et le flux recommandé
+- `/research-deep` - Investigation approfondie d'un sujet (mode scientifique/détective)
+- `/spec` - Planification interactive pour de nouvelles fonctionnalités
+- `/build` - Exécuter les plans d'implémentation approuvés
+- `/commit` - Workflow de commit avec vérification du build
+- `/debug` - Déboguer les problèmes locaux
+- `/debug-production` - Investiguer les erreurs de production
+- `/catch-up` - Reconstruire le contexte depuis l'historique git
+- `/standup` - Générer des résumés de travail
+- `/retro` - Capturer les apprentissages du travail terminé
+- `/research` - Recherche web rapide sur un sujet
 
-### Key Skills
-- `portal-tailwind` - Tailwind styling with tw- prefix
-- `prisma-migrations` - Database schema changes
-- `api-development` - Backend API patterns
-- `local-debugging` - Log locations and common errors
+### Compétences Clés
+- `portal-tailwind` - Style Tailwind avec préfixe tw-
+- `prisma-migrations` - Modifications du schéma de base de données
+- `api-development` - Patterns d'API backend
+- `local-debugging` - Emplacements des logs et erreurs courantes

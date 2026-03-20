@@ -1,148 +1,148 @@
-# Writing evergreen documentation
+# Rédiger de la Documentation Evergreen
 
-see also: 
-- `documentation/processes/WRITE_PLANNING_DOC.md` - for writing ephemeral decision/planning docs
-- `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` - for keeping documentation current every so often
+voir aussi :
+- `documentation/processes/WRITE_PLANNING_DOC.md` - pour rédiger des documents de décision/planification éphémères
+- `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` - pour maintenir la documentation à jour périodiquement
 
 
-# What are evergreen docs?
+# Qu'est-ce qu'une documentation evergreen ?
 
-This is for writing evergreen, general documentation on how the system works.
+Ceci concerne la rédaction de documentation evergreen et générale sur le fonctionnement du système.
 
-These should be a concise, clear, well-structured, complete-enough, up-to-date description of things. By "complete-enough", they should cover most of the important topics, if only to signpost to where more information can be found, or to the code itself.
+Ces documents doivent être une description concise, claire, bien structurée, suffisamment complète et à jour des choses. Par « suffisamment complète », ils doivent couvrir la plupart des sujets importants, ne serait-ce que pour indiquer où trouver plus d'informations, ou le code lui-même.
 
-They should refer to one another, and avoid too much overlap in content, so that if information changes, we ideally only need to change the documentation in one place.
+Ils doivent se référer les uns aux autres, et éviter trop de chevauchement de contenu, de sorte que si une information change, nous n'ayons idéalement qu'un seul endroit à modifier dans la documentation.
 
 
 # Format
 
-They should be written in Markdown, stored as `documentation/reference/TOPIC_NAME.md`.
+Ils doivent être rédigés en Markdown, stockés dans `documentation/reference/NOM_DU_SUJET.md`.
 
 
-## Document structure
+## Structure du Document
 
-They might be organised into something like the following sections. Use your judgment. Probably only a few of these will be relevant for each doc, feel free to rename them, etc.
+Ils pourraient être organisés en sections similaires à celles ci-dessous. Utilisez votre jugement. Probablement seules quelques-unes seront pertinentes pour chaque document, n'hésitez pas à les renommer, etc.
 
 
 ### Introduction
 
-2-sentence summary of the topic, and what the document covers.
+Résumé de 2 phrases du sujet et de ce que le document couvre.
 
-### See also
+### Voir aussi
 
-Bullet-point list of other relevant docs, code, urls, or other resources that provide related information, or more detail. Provide a 1-sentence summary or explanation of how each one is relevant. 
+Liste à puces d'autres documents, fichiers de code, URLs ou autres ressources pertinentes qui fournissent des informations connexes ou plus de détails. Fournissez un résumé d'une phrase ou une explication de la pertinence de chacun.
 
-Examples of good cross-references:
-- `documentation/processes/WRITE_PLANNING_DOC.md` - for information about writing ephemeral decision/planning docs
-- `components/blah.tsx` - implementation of blah features described here
-- `documentation/planning/250526a_blah_detailed_planning.md` - historical decision context on the project to build that feature
+Exemples de bonnes références croisées :
+- `documentation/processes/WRITE_PLANNING_DOC.md` - pour des informations sur la rédaction de documents de décision/planification éphémères
+- `components/blah.tsx` - implémentation des fonctionnalités décrites ici
+- `documentation/planning/250526a_blah_detailed_planning.md` - contexte historique de décision sur le projet de construction de cette fonctionnalité
 
-- External URLs when relevant (e.g., library documentation)
+- URLs externes quand pertinent (par ex., documentation de bibliothèque)
 
-Add references to and from this new doc (e.g. in relevant code, planning docs in `documentation/planning/*.md`, etc) - use a subagent for this
+Ajoutez des références vers et depuis ce nouveau document (par ex., dans le code pertinent, les documents de planification dans `documentation/planning/*.md`, etc) - utilisez un sous-agent pour cela
 
-#### Cross-Reference Best Practices
+#### Bonnes Pratiques de Références Croisées
 
-- **Update `documentation/DOCUMENTATION_ORGANISATION.md`
-- **Link to canonical source** (e.g. functions, files, docs, urls, etc) for detailed information rather than duplicating
-- **Provide 1-sentence context** with each link explaining its relevance
-- **Use relative paths** for internal documentation links
-- **Avoid content duplication** - if information exists elsewhere, link to it
+- **Mettez à jour `documentation/DOCUMENTATION_ORGANISATION.md`**
+- **Liez vers la source canonique** (par ex., fonctions, fichiers, docs, urls, etc.) pour les informations détaillées plutôt que de dupliquer
+- **Fournissez un contexte d'une phrase** avec chaque lien expliquant sa pertinence
+- **Utilisez des chemins relatifs** pour les liens de documentation interne
+- **Évitez la duplication de contenu** - si l'information existe ailleurs, liez-la
 
 
-### Principles, key decisions
+### Principes, Décisions Clés
 
-- Include any specific principles/approaches or decisions that have been explicitly agreed with the user (over and above existing Cursor rules, project examples, best practices, etc).
-- As you get new information from the user, update this doc so it's always up-to-date.
+- Incluez tous les principes/approches ou décisions spécifiques qui ont été explicitement convenus avec l'utilisateur (au-delà des règles du projet, exemples, bonnes pratiques existants, etc).
+- Au fur et à mesure que vous recevez de nouvelles informations de l'utilisateur, mettez à jour ce document pour qu'il soit toujours à jour.
 
-### [Provide a few detailed sections here, depending on the topic]
+### [Fournissez quelques sections détaillées ici, selon le sujet]
 
-Include as appropriate:
-- high-level overview, architecture
-- common patterns, howtos
-- examples
-- gotchas
+Incluez selon le cas :
+- vue d'ensemble de haut niveau, architecture
+- patterns courants, guides pratiques
+- exemples
+- pièges à éviter
 - limitations
-- troubleshooting
-- planned future work
+- dépannage
+- travaux futurs planifiés
 
 
-### Documenting Systems in Transition
+### Documentation des Systèmes en Transition
 
-When documenting systems that are changing (e.g., architectural migrations):
+Lors de la documentation de systèmes qui changent (par ex., migrations architecturales) :
 
-1. **Clearly distinguish states**:
-   - **Current State**: How the system works today
-   - **Target State**: The intended future architecture
-   - **Migration Status**: Progress and timeline if known
+1. **Distinguez clairement les états** :
+   - **État Actuel** : Comment le système fonctionne aujourd'hui
+   - **État Cible** : L'architecture future prévue
+   - **État de la Migration** : Progrès et calendrier si connu
 
-2. **Reference decisions**: Link to planning docs or ARCHITECTURE.md for rationale
+2. **Référencez les décisions** : Liez aux documents de planification ou ARCHITECTURE.md pour la justification
 
-3. **Update incrementally**: As migration progresses, update the documentation
+3. **Mettez à jour progressivement** : Au fur et à mesure que la migration progresse, mettez à jour la documentation
 
-Example:
+Exemple :
 ```markdown
-## Database Architecture
+## Architecture de la Base de Données
 
-**Current State**: Uses decomposed element storage (each HTML element as a row)
-**Target State**: Single-row document storage with JSONB enhancements
-**Migration Status**: Schema designed, code updates pending
+**État Actuel** : Utilise le stockage d'éléments décomposés (chaque élément HTML comme une ligne)
+**État Cible** : Stockage de document en une seule ligne avec améliorations JSONB
+**État de la Migration** : Schéma conçu, mises à jour du code en attente
 
-see `documentation/reference/ARCHITECTURE.md` for migration rationale
+voir `documentation/reference/ARCHITECTURE.md` pour la justification de la migration
 ```
 
 
-### Status Indicators
+### Indicateurs d'État
 
-Use consistent markers throughout documentation:
-- ✓ **Implemented** - Feature is complete and working
-- 🚧 **In Progress** - Actively being developed
-- 📋 **Planned** - Designed but not yet started
-- ⚠️ **Deprecated** - Being phased out, avoid using
+Utilisez des marqueurs cohérents dans toute la documentation :
+- ✓ **Implémenté** - La fonctionnalité est terminée et fonctionnelle
+- 🚧 **En Cours** - En cours de développement actif
+- 📋 **Planifié** - Conçu mais pas encore commencé
+- ⚠️ **Déprécié** - En cours de suppression progressive, à éviter
 
-Example:
+Exemple :
 ```markdown
-## Features
-- User authentication ✓
-- File upload 🚧
-- Advanced search 📋
-- Legacy API ⚠️ (see new architecture)
+## Fonctionnalités
+- Authentification utilisateur ✓
+- Téléversement de fichiers 🚧
+- Recherche avancée 📋
+- API héritée ⚠️ (voir la nouvelle architecture)
 ```
 
 
-### Appendix
+### Annexe
 
-Add any other important context here, e.g.
-- example data
-- other information that should be captured but doesn't fit neatly in the above sections
+Ajoutez tout autre contexte important ici, par ex.
+- données d'exemple
+- autres informations qui devraient être capturées mais ne rentrent pas facilement dans les sections ci-dessus
 
 
 # Maintenance
 
-## Review Frequency
+## Fréquence de Revue
 
-Regular documentation review ensures accuracy:
-- **After major features** - Update immediately after implementation
-- **During housekeeping** - Monthly review recommended
-- **When outdated** - Fix immediately when noticed
-- **Before milestones** - Ensure docs reflect current state
+La revue régulière de la documentation assure la précision :
+- **Après les fonctionnalités majeures** - Mettre à jour immédiatement après l'implémentation
+- **Pendant la maintenance** - Revue mensuelle recommandée
+- **Quand obsolète** - Corriger immédiatement quand remarqué
+- **Avant les jalons** - S'assurer que la documentation reflète l'état actuel
 
-see `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` for the complete housekeeping process
+voir `documentation/processes/UPDATE_HOUSEKEEPING_DOCUMENTATION.md` pour le processus complet de maintenance
 
-## Common Pitfalls to Avoid
+## Pièges Courants à Éviter
 
-1. **Information duplication** - Creates maintenance burden when things change
-2. **Vague status descriptions** - Be specific about implementation state
-3. **Missing cross-references** - Always link to related documentation
-4. **Outdated examples** - Ensure code samples match current patterns
-5. **Forgotten transitions** - Update docs as systems migrate
+1. **Duplication d'information** - Crée une charge de maintenance quand les choses changent
+2. **Descriptions de statut vagues** - Soyez spécifique sur l'état d'implémentation
+3. **Références croisées manquantes** - Liez toujours vers la documentation connexe
+4. **Exemples obsolètes** - Assurez-vous que les échantillons de code correspondent aux patterns actuels
+5. **Transitions oubliées** - Mettez à jour la documentation au fur et à mesure des migrations
 
-## Quality Checklist
+## Checklist de Qualité
 
-Before committing documentation:
-- [ ] Cross-references are valid and helpful
-- [ ] Status indicators accurately reflect implementation
-- [ ] No contradictions with other documents
-- [ ] Examples match current code patterns
-- [ ] Transitional states are clearly marked
-- [ ] "See also" sections are comprehensive
+Avant de committer la documentation :
+- [ ] Les références croisées sont valides et utiles
+- [ ] Les indicateurs de statut reflètent fidèlement l'implémentation
+- [ ] Aucune contradiction avec d'autres documents
+- [ ] Les exemples correspondent aux patterns de code actuels
+- [ ] Les états de transition sont clairement marqués
+- [ ] Les sections « Voir aussi » sont complètes

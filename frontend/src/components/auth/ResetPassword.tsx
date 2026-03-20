@@ -18,16 +18,16 @@ const ResetPassword = () => {
       }}
       validationSchema={Yup.object().shape({
         email: Yup.string()
-          .email("Must be a valid email")
+          .email("L'email doit être valide")
           .max(255)
-          .required("Email is required"),
+          .required("L'email est requis"),
       })}
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
         try {
           resetPassword(values.email);
           navigate("/auth/sign-in");
         } catch (error: any) {
-          const message = error.message || "Something went wrong";
+          const message = error.message || "Une erreur est survenue";
 
           setStatus({ success: false });
           setErrors({ submit: message });
@@ -56,7 +56,7 @@ const ResetPassword = () => {
               size="lg"
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Saisissez votre email"
               value={values.email}
               isInvalid={Boolean(touched.email && errors.email)}
               onBlur={handleBlur}
@@ -75,7 +75,7 @@ const ResetPassword = () => {
               size="lg"
               disabled={isSubmitting}
             >
-              Reset password
+              Réinitialiser le mot de passe
             </Button>
           </div>
         </Form>

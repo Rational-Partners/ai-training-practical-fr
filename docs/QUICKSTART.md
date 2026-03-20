@@ -1,115 +1,115 @@
-# Project Quickstart Guide
+# Guide de Démarrage Rapide
 
-## TL;DR (After Cloning)
+## En Bref (Après le Clonage)
 
-1.  **Install all dependencies:**
+1.  **Installer toutes les dépendances :**
     ```bash
-    # Run from project root
+    # Exécuter depuis la racine du projet
     npm install
     ```
-2.  **Set up the database:**
+2.  **Configurer la base de données :**
     ```bash
-    # Run from project root
+    # Exécuter depuis la racine du projet
     npm run db:migrate:dev -w backend
     ```
-3.  **Start development servers:**
+3.  **Démarrer les serveurs de développement :**
     ```bash
-    # Run from project root
+    # Exécuter depuis la racine du projet
     npm run dev
     ```
 
 ---
 
-Welcome to the AI-Assisted Development Monorepo Template!
-This guide will help you get the project up and running quickly.
+Bienvenue dans le modèle de monorepo pour le développement assisté par IA !
+Ce guide vous aidera à mettre le projet en route rapidement.
 
-## Prerequisites
+## Prérequis
 
-Before you begin, ensure you have the following installed:
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
-*   **Node.js:** (Check `.nvmrc` or root `package.json` `engines` field if specified for a recommended version). We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node versions.
-*   **npm:** (Usually comes with Node.js)
+*   **Node.js :** (Vérifiez `.nvmrc` ou le champ `engines` du `package.json` racine si une version recommandée est spécifiée). Nous recommandons d'utiliser [nvm](https://github.com/nvm-sh/nvm) pour gérer les versions de Node.
+*   **npm :** (Généralement inclus avec Node.js)
 
-## Setup Steps
+## Étapes de Configuration
 
-1.  **Clone the Repository:**
+1.  **Cloner le dépôt :**
     ```bash
-    git clone <your-repository-url>
-    cd <repository-directory>
+    git clone <url-de-votre-depot>
+    cd <repertoire-du-depot>
     ```
 
-2.  **Install Dependencies:**
-    Install all dependencies for the root, backend, and frontend workspaces.
+2.  **Installer les dépendances :**
+    Installez toutes les dépendances pour la racine, le backend et le frontend.
     ```bash
     npm install
     ```
 
-3.  **Check Backend Environment (`backend/.env`):**
-    *   Navigate to the `backend` directory.
-    *   Verify the `.env` file exists.
-    *   Ensure it contains the correct `DATABASE_URL` and `BACKEND_PORT`. Adjust the port if necessary.
+3.  **Vérifier l'environnement backend (`backend/.env`) :**
+    *   Naviguez vers le répertoire `backend`.
+    *   Vérifiez que le fichier `.env` existe.
+    *   Assurez-vous qu'il contient les bonnes valeurs pour `DATABASE_URL` et `BACKEND_PORT`. Ajustez le port si nécessaire.
         ```dotenv
         # backend/.env
         DATABASE_URL="file:./dev.db"
         BACKEND_PORT=3001
         ```
 
-4.  **Check Frontend Environment (`frontend/.env.development` & `frontend/.env.production`):**
-    *   Navigate to the `frontend` directory.
-    *   Verify the `.env.development` and `.env.production` files exist.
-    *   Check the development variables in `.env.development`. **Ensure all variables are prefixed with `VITE_`** to expose them to the Vite frontend. At minimum, verify the API base URL:
+4.  **Vérifier l'environnement frontend (`frontend/.env.development` & `frontend/.env.production`) :**
+    *   Naviguez vers le répertoire `frontend`.
+    *   Vérifiez que les fichiers `.env.development` et `.env.production` existent.
+    *   Vérifiez les variables de développement dans `.env.development`. **Assurez-vous que toutes les variables sont préfixées par `VITE_`** pour les exposer au frontend Vite. Au minimum, vérifiez l'URL de base de l'API :
         ```dotenv
         # frontend/.env.development
         VITE_API_BASE_URL=http://localhost:3001/api
-        
-        # Verify other VITE_ variables required by the frontend template (e.g., Firebase, Auth0 keys)
+
+        # Vérifiez les autres variables VITE_ requises par le template frontend (par ex., clés Firebase, Auth0)
         # VITE_FIREBASE_API_KEY=...
         ```
-    
-5.  **Create, Migrate, and Seed Database:**
-    Run the initial Prisma migration and seed the database from the **root** directory. This will create the SQLite database file (`backend/dev.db`), set up the tables based on the schema (`backend/prisma/schema.prisma`), and populate it with example data.
+
+5.  **Créer, Migrer et Peupler la Base de Données :**
+    Exécutez la migration Prisma initiale et peuplez la base de données depuis le répertoire **racine**. Cela créera le fichier de base de données SQLite (`backend/dev.db`), configurera les tables selon le schéma (`backend/prisma/schema.prisma`) et le remplira avec des données d'exemple.
     ```bash
-    # Apply schema changes
+    # Appliquer les modifications du schéma
     npm run db:migrate:dev -w backend
-    # Populate with example data
+    # Remplir avec des données d'exemple
     npm run db:seed -w backend
     ```
-    You only need to run `migrate dev` the first time or when the database schema changes. You can re-run `db:seed` anytime to reset the example data.
+    Vous n'avez besoin d'exécuter `migrate dev` que la première fois ou lorsque le schéma de la base de données change. Vous pouvez relancer `db:seed` à tout moment pour réinitialiser les données d'exemple.
 
-## Running the Application
+## Exécution de l'Application
 
-*   **Development Mode:**
-    To start both the backend and frontend development servers concurrently (with hot-reloading), run the following command from the **root** directory:
+*   **Mode Développement :**
+    Pour démarrer simultanément les serveurs de développement backend et frontend (avec rechargement à chaud), exécutez la commande suivante depuis le répertoire **racine** :
     ```bash
     npm run dev
     ```
-    *   Backend will typically run on `http://localhost:3001` (or the `BACKEND_PORT` you set).
-    *   Frontend will typically run on `http://localhost:3000` (or the port set in `frontend/package.json` `dev` script) and should open automatically in your browser.
+    *   Le backend sera généralement accessible sur `http://localhost:3001` (ou le `BACKEND_PORT` que vous avez défini).
+    *   Le frontend sera généralement accessible sur `http://localhost:3000` (ou le port défini dans le script `dev` de `frontend/package.json`) et devrait s'ouvrir automatiquement dans votre navigateur.
 
-*   **Linting and Formatting:**
-    To check for code style issues and format the code across the entire project, run these commands from the **root** directory:
+*   **Linting et Formatage :**
+    Pour vérifier les problèmes de style de code et formater le code dans l'ensemble du projet, exécutez ces commandes depuis le répertoire **racine** :
     ```bash
     npm run lint
     npm run format
     ```
 
-*   **Building for Production:**
-    To create production-ready builds:
+*   **Build pour la Production :**
+    Pour créer des builds prêts pour la production :
     ```bash
-    # Build the backend (output to backend/dist/)
+    # Build du backend (sortie dans backend/dist/)
     npm run build -w backend
-    
-    # Build the frontend (output to frontend/dist/)
+
+    # Build du frontend (sortie dans frontend/dist/)
     npm run build -w frontend
     ```
 
-*   **Running in Production (Example):**
-    After building, you would typically start the backend server like this:
+*   **Exécution en Production (Exemple) :**
+    Après le build, vous démarreriez typiquement le serveur backend comme ceci :
     ```bash
     npm run start -w backend
     ```
-    The built frontend (`frontend/dist`) would then be served by a static file server (like Nginx or Caddy) or hosted on a platform like Vercel or Netlify, configured to proxy API requests to your running backend.
+    Le frontend buildé (`frontend/dist`) serait alors servi par un serveur de fichiers statiques (comme Nginx ou Caddy) ou hébergé sur une plateforme comme Vercel ou Netlify, configuré pour rediriger les requêtes API vers votre backend en cours d'exécution.
 
-## Next Steps
+## Prochaines Étapes
 
-Explore the `backend/src` and `frontend/src` directories to understand the project structure and start building your application! 
+Explorez les répertoires `backend/src` et `frontend/src` pour comprendre la structure du projet et commencer à construire votre application !

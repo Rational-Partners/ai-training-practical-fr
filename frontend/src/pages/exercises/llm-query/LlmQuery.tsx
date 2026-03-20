@@ -14,14 +14,14 @@ const LlmQuery = () => {
 
   const handleSubmit = () => {
     console.log('LLM Query:', query);
-    // TODO: Implement actual LLM API call here
+    // TODO : Implémenter l'appel API LLM réel ici
   };
 
   return (
     <React.Fragment>
-      <Helmet title="LLM Query Exercise" />
+      <Helmet title="Exercice Requête LLM" />
       <Container fluid className="p-0">
-        <h1 className="h3 mb-3">LLM Query Exercise</h1>
+        <h1 className="h3 mb-3">Exercice Requête LLM</h1>
 
         {showIntroAlert && (
           <Alert 
@@ -34,32 +34,32 @@ const LlmQuery = () => {
               <FontAwesomeIcon icon={faBell} fixedWidth />
             </div>
             <div className="alert-message">
-              <strong>Welcome to the LLM Query Exercise!</strong>
+              <strong>Bienvenue dans l'Exercice Requête LLM !</strong>
               <p className="mb-2">
-                This page provides a basic interface to send a query to a Large Language Model (LLM) via the backend.
+                Cette page fournit une interface basique pour envoyer une requête à un Grand Modèle de Langage (LLM) via le backend.
               </p>
               <p className="mb-1">
-                To make this page functional, you'll need to implement the following steps, using AI assistance:
+                Pour rendre cette page fonctionnelle, vous devrez implémenter les étapes suivantes, en utilisant l'assistance de l'IA :
               </p>
               <p className="mb-2">
-                Suggestion: Before you start, create a brief plan using <code>@WRITE_PLANNING_DOC.md</code> to outline how you'll implement the task list below.
+                Suggestion : Avant de commencer, créez un bref plan en utilisant <code>@WRITE_PLANNING_DOC.md</code> pour esquisser comment vous allez implémenter la liste de tâches ci-dessous.
               </p>
               <ul>
                 <li>
-                  <strong>Task 1: Backend Integration:</strong> Create a new API endpoint in the backend (e.g., <code>/api/llm/query</code>).
-                  This endpoint should accept a POST request containing the user's query. Inside the endpoint handler,
-                  make a call to an LLM of your choice (e.g., using a library like OpenAI's or Anthropic's SDK).
-                  Return the LLM's response to the frontend.
+                  <strong>Tâche 1 : Intégration Backend :</strong> Créez un nouveau endpoint API dans le backend (par ex., <code>/api/llm/query</code>).
+                  Ce endpoint doit accepter une requête POST contenant la question de l'utilisateur. Dans le gestionnaire du endpoint,
+                  faites un appel à un LLM de votre choix (par ex., en utilisant une bibliothèque comme le SDK d'OpenAI ou d'Anthropic).
+                  Renvoyez la réponse du LLM au frontend.
                 </li>
                 <li>
-                  <strong>Task 2: Frontend API Call & Display:</strong> Update the <code>handleSubmit</code> function in this component.
-                  It should make a POST request to your new backend endpoint, sending the <code>query</code> state.
-                  Handle the response from the backend and display the LLM's answer below the form (you'll need to add state and JSX for this).
+                  <strong>Tâche 2 : Appel API Frontend et Affichage :</strong> Mettez à jour la fonction <code>handleSubmit</code> dans ce composant.
+                  Elle doit faire une requête POST vers votre nouveau endpoint backend, en envoyant l'état <code>query</code>.
+                  Gérez la réponse du backend et affichez la réponse du LLM sous le formulaire (vous devrez ajouter du state et du JSX pour cela).
                 </li>
                 <li>
-                  <strong>Task 3: Model Selection:</strong> Enhance the UI by adding a dropdown or radio buttons
-                  to allow the user to select which LLM they want to query (e.g., GPT-4, Claude 3, etc.).
-                  Pass this selection to the backend endpoint and adjust the backend logic accordingly.
+                  <strong>Tâche 3 : Sélection du Modèle :</strong> Améliorez l'interface en ajoutant un menu déroulant ou des boutons radio
+                  pour permettre à l'utilisateur de sélectionner quel LLM il veut interroger (par ex., GPT-4, Claude 3, etc.).
+                  Transmettez cette sélection au endpoint backend et ajustez la logique backend en conséquence.
                 </li>
               </ul>
             </div>
@@ -70,32 +70,32 @@ const LlmQuery = () => {
           <Col>
             <Card>
               <Card.Header>
-                <Card.Title>Ask a question</Card.Title>
+                <Card.Title>Posez une question</Card.Title>
                 <h6 className="card-subtitle text-muted">
-                  Enter your question below and submit it to the LLM.
+                  Saisissez votre question ci-dessous et soumettez-la au LLM.
                 </h6>
               </Card.Header>
               <Card.Body>
                 <Form>
                   <Form.Group className="mb-3">
-                    <Form.Label>Your Question</Form.Label>
+                    <Form.Label>Votre Question</Form.Label>
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      placeholder="Enter your question here..."
+                      placeholder="Saisissez votre question ici..."
                       value={query}
                       onChange={handleQueryChange}
                     />
                   </Form.Group>
                   <Button variant="primary" onClick={handleSubmit}>
-                    Submit Query
+                    Envoyer la Requête
                   </Button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        {/* TODO: Add section to display LLM response */}
+        {/* TODO : Ajouter une section pour afficher la réponse du LLM */}
       </Container>
     </React.Fragment>
   );

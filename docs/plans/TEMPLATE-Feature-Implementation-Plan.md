@@ -1,120 +1,120 @@
-# TEMPLATE: [Your Feature Name] Implementation Plan
+# MODÈLE : Plan d'Implémentation de [Nom de Votre Fonctionnalité]
 
-<!-- 
-Instructions:
-1. Rename this file: Replace TEMPLATE with your specific feature name (e.g., 02-User-Preferences-Feature.md).
-2. Replace Placeholders: Search and replace all bracketed placeholders like `[Your Feature Name]`, `[ModelName]`, `[ServiceName]`, `[UIComponentPath]`, `[api-route-prefix]`, `[relevant-model]`, `[specific-action]`, etc., with the actual names relevant to your feature.
-3. Customize Checklist: Add, remove, or modify checklist items based on the specific requirements of your feature. Not all phases or steps may be necessary.
-4. Fill in Details: Add more specific details to each step as you understand the requirements better.
+<!--
+Instructions :
+1. Renommez ce fichier : Remplacez TEMPLATE par le nom spécifique de votre fonctionnalité (par ex., 02-Fonctionnalite-Preferences-Utilisateur.md).
+2. Remplacez les espaces réservés : Recherchez et remplacez tous les espaces réservés entre crochets comme `[Nom de Votre Fonctionnalité]`, `[NomDuModele]`, `[NomDuService]`, `[CheminComposantUI]`, `[prefixe-route-api]`, `[modele-concerne]`, `[action-specifique]`, etc., par les noms réels correspondant à votre fonctionnalité.
+3. Personnalisez la checklist : Ajoutez, supprimez ou modifiez les éléments de la checklist selon les exigences spécifiques de votre fonctionnalité. Toutes les phases ou étapes ne sont pas nécessairement applicables.
+4. Complétez les détails : Ajoutez des détails plus spécifiques à chaque étape au fur et à mesure que vous comprenez mieux les exigences.
 -->
 
-## Overview
-This plan outlines the steps to implement the new `[Your Feature Name]` feature within the application. This feature will enable `[brief description of what the feature does and its main benefit]`.
+## Vue d'Ensemble
+Ce plan décrit les étapes pour implémenter la nouvelle fonctionnalité `[Nom de Votre Fonctionnalité]` dans l'application. Cette fonctionnalité permettra de `[brève description de ce que fait la fonctionnalité et son principal avantage]`.
 
-## Goals
-- [ ] `[Specific Goal 1 - e.g., Define and manage [Data Type] at the [Relevant Context] level]`
-- [ ] `[Specific Goal 2 - e.g., Allow users to view [Data Type] in the [Relevant UI Section]]`
-- [ ] `[Specific Goal 3 - e.g., Enable users to input and save [Specific Data] for [Relevant Context]]`
-- [ ] `[Specific Goal 4 - e.g., Integrate data capture smoothly into the existing [Workflow Name] workflow]`
-- [ ] `[Specific Goal 5 - e.g., Ensure data persistence and retrieval]`
-- [ ] *Add more specific goals as needed*
+## Objectifs
+- [ ] `[Objectif Spécifique 1 - par ex., Définir et gérer [Type de Données] au niveau du [Contexte Pertinent]]`
+- [ ] `[Objectif Spécifique 2 - par ex., Permettre aux utilisateurs de visualiser [Type de Données] dans la [Section UI Pertinente]]`
+- [ ] `[Objectif Spécifique 3 - par ex., Permettre aux utilisateurs de saisir et sauvegarder [Données Spécifiques] pour [Contexte Pertinent]]`
+- [ ] `[Objectif Spécifique 4 - par ex., Intégrer la capture de données de manière fluide dans le workflow [Nom du Workflow] existant]`
+- [ ] `[Objectif Spécifique 5 - par ex., Assurer la persistance et la récupération des données]`
+- [ ] *Ajoutez d'autres objectifs spécifiques selon les besoins*
 
-## Implementation Checklist
+## Checklist d'Implémentation
 
-### Phase 1: Database Schema & Setup (If applicable)
-- [ ] Define `[ModelName1]` model in `prisma.schema` for `[purpose of model]`.
-- [ ] Define `[ModelName2]` model in `prisma.schema` for `[purpose of model]`.
-- [ ] Add relations between new models and existing models (`[ExistingModel1]`, `[ExistingModel2]`).
-- [ ] Consider adding relevant Enums (e.g., `[EnumName]Status`, `[EnumName]Type`).
+### Phase 1 : Schéma de Base de Données et Configuration (Si applicable)
+- [ ] Définir le modèle `[NomDuModele1]` dans `prisma.schema` pour `[objectif du modèle]`.
+- [ ] Définir le modèle `[NomDuModele2]` dans `prisma.schema` pour `[objectif du modèle]`.
+- [ ] Ajouter les relations entre les nouveaux modèles et les modèles existants (`[ModeleExistant1]`, `[ModeleExistant2]`).
+- [ ] Envisager l'ajout d'Enums pertinents (par ex., `[NomEnum]Status`, `[NomEnum]Type`).
 ```prisma
-// Example Prisma Schema Snippet (optional)
-// model [ModelName1] {
+// Exemple d'extrait de schéma Prisma (optionnel)
+// model [NomDuModele1] {
 //   id        String   @id @default(cuid())
 //   createdAt DateTime @default(now())
 //   updatedAt DateTime @updatedAt
 //   name      String
-//   // ... other fields
-//   [existingModel1]   [ExistingModel1]? @relation(fields: [[existingModel1Id]], references: [id])
-//   [existingModel1Id] String?
+//   // ... autres champs
+//   [modeleExistant1]   [ModeleExistant1]? @relation(fields: [[modeleExistant1Id]], references: [id])
+//   [modeleExistant1Id] String?
 // }
 ```
-- [ ] Run `npx prisma migrate dev --name add_[feature_name]_models` to apply changes.
-- [ ] Run `npx prisma generate` to update the Prisma client.
-- [ ] Consider if a seed script update in `backend/prisma/seed.ts` is needed for initial data.
+- [ ] Exécuter `npx prisma migrate dev --name add_[nom_fonctionnalite]_models` pour appliquer les modifications.
+- [ ] Exécuter `npx prisma generate` pour mettre à jour le client Prisma.
+- [ ] Vérifier si une mise à jour du script de seed dans `backend/prisma/seed.ts` est nécessaire pour les données initiales.
 
-### Phase 2: Backend API - Core Logic & Data Management
-- [ ] **Repository:** Create/update repository (`[FeatureName].repository.ts` or existing) with functions for:
-    - [ ] `find[ModelName]s` (or relevant query function).
-    - [ ] `find[ModelName]ById`.
-    - [ ] `create[ModelName]`.
-    - [ ] `update[ModelName]`.
-    - [ ] `delete[ModelName]`.
-- [ ] **Service:** Create/update service (`[FeatureName].service.ts` or existing `[RelevantDomain]Service`) to handle business logic:
-    - [ ] Function to get `[Data Type]` (potentially handling creation if not exists).
-    - [ ] Function to create/update `[Data Type]`.
-    - [ ] Function to delete `[Data Type]`.
-    - [ ] *Add other business logic functions as needed.*
+### Phase 2 : API Backend - Logique Métier et Gestion des Données
+- [ ] **Repository :** Créer/mettre à jour le repository (`[NomFonctionnalite].repository.ts` ou existant) avec les fonctions pour :
+    - [ ] `find[NomDuModele]s` (ou fonction de requête pertinente).
+    - [ ] `find[NomDuModele]ById`.
+    - [ ] `create[NomDuModele]`.
+    - [ ] `update[NomDuModele]`.
+    - [ ] `delete[NomDuModele]`.
+- [ ] **Service :** Créer/mettre à jour le service (`[NomFonctionnalite].service.ts` ou `[DomainePertinent]Service` existant) pour gérer la logique métier :
+    - [ ] Fonction pour récupérer `[Type de Données]` (gérant potentiellement la création si inexistant).
+    - [ ] Fonction pour créer/mettre à jour `[Type de Données]`.
+    - [ ] Fonction pour supprimer `[Type de Données]`.
+    - [ ] *Ajoutez d'autres fonctions de logique métier selon les besoins.*
 ```typescript
-// Example Service Snippet (optional)
-// async function get[DataType]ForUser(userId: string, resourceId: string): Promise<[ModelName] | null> {
-//   // ... check permissions ...
-//   const data = await db.[modelName].findUnique({ where: { id: resourceId } });
-//   // ... potentially enrich data ...
+// Exemple d'extrait de Service (optionnel)
+// async function get[TypeDeDonnees]ForUser(userId: string, resourceId: string): Promise<[NomDuModele] | null> {
+//   // ... vérifier les permissions ...
+//   const data = await db.[nomDuModele].findUnique({ where: { id: resourceId } });
+//   // ... potentiellement enrichir les données ...
 //   return data;
 // }
 ```
-- [ ] **Controller:** Create/update controller (`[FeatureName].controller.ts` or existing) for handling API requests.
-    - [ ] `handleGet[Data Type]`.
-    - [ ] `handleCreate[Data Type]`.
-    - [ ] `handleUpdate[Data Type]`.
-    - [ ] `handleDelete[Data Type]`.
-- [ ] **Routes:** Define API routes in `[featureName].routes.ts` and integrate into `backend/src/server.ts` (likely under `/api/[api-route-prefix]`):
-    - [ ] `GET /api/[api-route-prefix]/`
-    - [ ] `GET /api/[api-route-prefix]/:id`
-    - [ ] `POST /api/[api-route-prefix]/`
-    - [ ] `PUT /api/[api-route-prefix]/:id`
-    - [ ] `DELETE /api/[api-route-prefix]/:id`
-    - *Adjust routes based on requirements (e.g., nested resources).*
+- [ ] **Controller :** Créer/mettre à jour le controller (`[NomFonctionnalite].controller.ts` ou existant) pour gérer les requêtes API.
+    - [ ] `handleGet[TypeDeDonnees]`.
+    - [ ] `handleCreate[TypeDeDonnees]`.
+    - [ ] `handleUpdate[TypeDeDonnees]`.
+    - [ ] `handleDelete[TypeDeDonnees]`.
+- [ ] **Routes :** Définir les routes API dans `[nomFonctionnalite].routes.ts` et les intégrer dans `backend/src/server.ts` (probablement sous `/api/[prefixe-route-api]`) :
+    - [ ] `GET /api/[prefixe-route-api]/`
+    - [ ] `GET /api/[prefixe-route-api]/:id`
+    - [ ] `POST /api/[prefixe-route-api]/`
+    - [ ] `PUT /api/[prefixe-route-api]/:id`
+    - [ ] `DELETE /api/[prefixe-route-api]/:id`
+    - *Ajustez les routes selon les besoins (par ex., ressources imbriquées).*
 ```typescript
-// Example Route Definition Snippet (optional)
+// Exemple d'extrait de définition de Route (optionnel)
 // import { Router } from 'express';
-// import { handleGet[DataType], handleCreate[DataType] } from './[featureName].controller';
-// import { validateCreate[DataType] } from './[featureName].validation';
-// import { checkAuth } from '../middleware/auth'; // Example middleware
+// import { handleGet[TypeDeDonnees], handleCreate[TypeDeDonnees] } from './[nomFonctionnalite].controller';
+// import { validateCreate[TypeDeDonnees] } from './[nomFonctionnalite].validation';
+// import { checkAuth } from '../middleware/auth'; // Exemple de middleware
 //
 // const router = Router();
 //
-// router.get('/', checkAuth, handleGet[DataType]);
-// router.post('/', checkAuth, validateCreate[DataType], handleCreate[DataType]);
-// // ... other routes
+// router.get('/', checkAuth, handleGet[TypeDeDonnees]);
+// router.post('/', checkAuth, validateCreate[TypeDeDonnees], handleCreate[TypeDeDonnees]);
+// // ... autres routes
 //
 // export default router;
 ```
-- [ ] **Validation:** Add input validation (e.g., using `express-validator`) for `POST`/`PUT` requests.
+- [ ] **Validation :** Ajouter la validation des entrées (par ex., avec `express-validator`) pour les requêtes `POST`/`PUT`.
 ```typescript
-// Example Validation Snippet (optional)
+// Exemple d'extrait de Validation (optionnel)
 // import { body } from 'express-validator';
 //
-// export const validateCreate[DataType] = [
-//   body('name').notEmpty().withMessage('Name is required').isString(),
-//   body('score').optional().isInt({ min: 1, max: 10 }).withMessage('Score must be between 1 and 10'),
-//   // ... other validation rules
+// export const validateCreate[TypeDeDonnees] = [
+//   body('name').notEmpty().withMessage('Le nom est requis').isString(),
+//   body('score').optional().isInt({ min: 1, max: 10 }).withMessage('Le score doit être entre 1 et 10'),
+//   // ... autres règles de validation
 // ];
 ```
-- [ ] **Permissions:** Ensure appropriate authorization checks are implemented (e.g., using middleware).
-- [ ] **Testing:** Add basic unit/integration tests for new service methods and API endpoints.
+- [ ] **Permissions :** S'assurer que les vérifications d'autorisation appropriées sont implémentées (par ex., via middleware).
+- [ ] **Tests :** Ajouter des tests unitaires/d'intégration de base pour les nouvelles méthodes de service et les endpoints API.
 
-### Phase 3: Frontend UI - Displaying Data & User Interaction
-- [ ] **Identify Component(s):** Locate or create the React component(s) responsible for `[displaying/managing the feature's UI]` (likely within `frontend/src/pages/[relevant-path]/` or `frontend/src/components/[relevant-path]/`).
-- [ ] **Fetch Data:** Call the relevant `GET` endpoint(s) from Phase 2 when the component mounts or data is needed.
-- [ ] **Display Data:** Render the fetched data appropriately.
+### Phase 3 : Interface Frontend - Affichage des Données et Interaction Utilisateur
+- [ ] **Identifier le(s) composant(s) :** Localiser ou créer le(s) composant(s) React responsable(s) de `[l'affichage/la gestion de l'interface de la fonctionnalité]` (probablement dans `frontend/src/pages/[chemin-pertinent]/` ou `frontend/src/components/[chemin-pertinent]/`).
+- [ ] **Récupérer les données :** Appeler le(s) endpoint(s) `GET` pertinent(s) de la Phase 2 lors du montage du composant ou quand les données sont nécessaires.
+- [ ] **Afficher les données :** Rendre les données récupérées de manière appropriée.
 ```tsx
-// Example Component Snippet (optional)
+// Exemple d'extrait de Composant (optionnel)
 // import React, { useState, useEffect } from 'react';
-// import apiClient from '../utils/apiClient'; // Example API client
+// import apiClient from '../utils/apiClient'; // Exemple de client API
 //
-// const [FeatureName]Component: React.FC<{ id: string }> = ({ id }) => {
-//   const [data, setData] = useState<[DataType] | null>(null);
+// const [NomFonctionnalite]Component: React.FC<{ id: string }> = ({ id }) => {
+//   const [data, setData] = useState<[TypeDeDonnees] | null>(null);
 //   const [loading, setLoading] = useState(true);
 //   const [error, setError] = useState<string | null>(null);
 //
@@ -122,11 +122,11 @@ This plan outlines the steps to implement the new `[Your Feature Name]` feature 
 //     const fetchData = async () => {
 //       try {
 //         setLoading(true);
-//         const response = await apiClient.get(`/api/[api-route-prefix]/${id}`);
+//         const response = await apiClient.get(`/api/[prefixe-route-api]/${id}`);
 //         setData(response.data);
 //         setError(null);
 //       } catch (err) {
-//         setError('Failed to load data.');
+//         setError('Échec du chargement des données.');
 //         console.error(err);
 //       } finally {
 //         setLoading(false);
@@ -135,68 +135,68 @@ This plan outlines the steps to implement the new `[Your Feature Name]` feature 
 //     fetchData();
 //   }, [id]);
 //
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>Error: {error}</div>;
-//   if (!data) return <div>No data found.</div>;
+//   if (loading) return <div>Chargement...</div>;
+//   if (error) return <div>Erreur : {error}</div>;
+//   if (!data) return <div>Aucune donnée trouvée.</div>;
 //
 //   return (
 //     <div>
 //       <h1>{data.name}</h1>
-//       {/* ... render other data fields ... */}
-//       <button onClick={() => {/* Handle Edit */}}>Edit</button>
-//       <button onClick={() => {/* Handle Delete */}}>Delete</button>
+//       {/* ... rendre les autres champs de données ... */}
+//       <button onClick={() => {/* Gérer la Modification */}}>Modifier</button>
+//       <button onClick={() => {/* Gérer la Suppression */}}>Supprimer</button>
 //     </div>
 //   );
 // };
 //
-// export default [FeatureName]Component;
+// export default [NomFonctionnalite]Component;
 ```
-- [ ] **User Actions:** Implement UI elements (buttons, forms, modals) for:
-    - [ ] Creating new `[Data Type]`.
-    - [ ] Editing existing `[Data Type]`.
-    - [ ] Deleting `[Data Type]`.
-    - [ ] Performing `[specific-action]` related to the feature.
-- [ ] **API Integration:** Connect UI actions to the corresponding backend API endpoints (`POST`, `PUT`, `DELETE`) created in Phase 2.
+- [ ] **Actions Utilisateur :** Implémenter les éléments d'interface (boutons, formulaires, modales) pour :
+    - [ ] Créer de nouveaux `[Type de Données]`.
+    - [ ] Modifier les `[Type de Données]` existants.
+    - [ ] Supprimer les `[Type de Données]`.
+    - [ ] Effectuer une `[action-specifique]` liée à la fonctionnalité.
+- [ ] **Intégration API :** Connecter les actions de l'interface aux endpoints API backend correspondants (`POST`, `PUT`, `DELETE`) créés en Phase 2.
 ```typescript
-// Example API Integration Snippet (optional)
-// const handleSave = async (updatedData: Partial<[DataType]>) => {
+// Exemple d'extrait d'intégration API (optionnel)
+// const handleSave = async (updatedData: Partial<[TypeDeDonnees]>) => {
 //   try {
-//     const response = await apiClient.put(`/api/[api-route-prefix]/${id}`, updatedData);
-//     setData(response.data); // Update local state
-//     // Show success message
+//     const response = await apiClient.put(`/api/[prefixe-route-api]/${id}`, updatedData);
+//     setData(response.data); // Mettre à jour l'état local
+//     // Afficher un message de succès
 //   } catch (err) {
-//     // Show error message
+//     // Afficher un message d'erreur
 //     console.error(err);
 //   }
 // };
 ```
-- [ ] **State Management:** Update local component state or Redux store to reflect data fetching and mutations.
-- [ ] **Error Handling:** Display appropriate messages if fetching or saving data fails.
-- [ ] **Routing:** Set up necessary frontend routes in `frontend/src/routes.tsx` if new pages are involved.
-- [ ] **Navigation:** Add links/buttons in relevant places (e.g., sidebar in `frontend/src/components/sidebar/SidebarNav.tsx`, navigation bars) to access the new feature/UI.
+- [ ] **Gestion d'État :** Mettre à jour l'état local du composant ou le store Redux pour refléter la récupération et les mutations de données.
+- [ ] **Gestion des Erreurs :** Afficher des messages appropriés si la récupération ou la sauvegarde des données échoue.
+- [ ] **Routage :** Configurer les routes frontend nécessaires dans `frontend/src/routes.tsx` si de nouvelles pages sont impliquées.
+- [ ] **Navigation :** Ajouter des liens/boutons aux endroits pertinents (par ex., barre latérale dans `frontend/src/components/sidebar/SidebarNav.tsx`, barres de navigation) pour accéder à la nouvelle fonctionnalité/interface.
 
-### Phase 4: Integration Testing & Refinement
-- [ ] **End-to-End Test 1:**
-    - `[Action 1 - e.g., Create a new [relevant-model] instance]`
-    - `[Action 2 - e.g., Navigate to the new feature UI]`
-    - `[Action 3 - e.g., Add several [Data Type] items using the UI]`
-    - `[Verification 1 - e.g., Verify items are saved correctly via API checks or UI refresh]`
-    - `[Action 4 - e.g., Edit/Delete items and verify changes]`
-- [ ] **End-to-End Test 2 (If applicable):**
-    - `[Scenario involving interaction with other features or data]`
-- [ ] **Edge Cases:** Consider potential edge cases:
-    - `[Edge case 1 - e.g., What happens if related data is deleted?]`
-    - `[Edge case 2 - e.g., Handling empty states or initial setup]`
-- [ ] **UI/UX Review:** Ensure the new UI elements are intuitive, accessible, and fit within the existing application design and flow.
+### Phase 4 : Tests d'Intégration et Raffinement
+- [ ] **Test de bout en bout 1 :**
+    - `[Action 1 - par ex., Créer une nouvelle instance de [modele-concerne]]`
+    - `[Action 2 - par ex., Naviguer vers la nouvelle interface de la fonctionnalité]`
+    - `[Action 3 - par ex., Ajouter plusieurs éléments [Type de Données] via l'interface]`
+    - `[Vérification 1 - par ex., Vérifier que les éléments sont correctement sauvegardés via des vérifications API ou un rafraîchissement de l'interface]`
+    - `[Action 4 - par ex., Modifier/Supprimer des éléments et vérifier les changements]`
+- [ ] **Test de bout en bout 2 (Si applicable) :**
+    - `[Scénario impliquant une interaction avec d'autres fonctionnalités ou données]`
+- [ ] **Cas limites :** Considérer les cas limites potentiels :
+    - `[Cas limite 1 - par ex., Que se passe-t-il si des données liées sont supprimées ?]`
+    - `[Cas limite 2 - par ex., Gestion des états vides ou de la configuration initiale]`
+- [ ] **Revue UI/UX :** S'assurer que les nouveaux éléments d'interface sont intuitifs, accessibles et s'intègrent dans le design et le flux existants de l'application.
 
-### Phase 5: Documentation
-- [ ] **Backend:** Update/create documentation in `backend/docs/` covering:
-    - [ ] New/updated Prisma models.
-    - [ ] New/updated API endpoints (routes, request/response formats, authorization).
-    - [ ] Key service logic or algorithms.
-- [ ] **Frontend:** Update/create documentation in `frontend/docs/` covering:
-    - [ ] New/updated UI components (purpose, props, state management).
-    - [ ] User interaction flows.
-    - [ ] Integration with state management (Redux slices/actions if applicable).
-- [ ] **User Guide:** Add a section to the main user guide (`README.md` or dedicated guide) explaining how to use the new feature from an end-user perspective.
-- [ ] **Plan Document:** Link this implementation plan document from relevant code comments or other documentation. 
+### Phase 5 : Documentation
+- [ ] **Backend :** Mettre à jour/créer la documentation dans `backend/docs/` couvrant :
+    - [ ] Modèles Prisma nouveaux/mis à jour.
+    - [ ] Endpoints API nouveaux/mis à jour (routes, formats de requête/réponse, autorisation).
+    - [ ] Logique de service ou algorithmes clés.
+- [ ] **Frontend :** Mettre à jour/créer la documentation dans `frontend/docs/` couvrant :
+    - [ ] Composants UI nouveaux/mis à jour (objectif, props, gestion d'état).
+    - [ ] Flux d'interaction utilisateur.
+    - [ ] Intégration avec la gestion d'état (slices/actions Redux si applicable).
+- [ ] **Guide Utilisateur :** Ajouter une section au guide utilisateur principal (`README.md` ou guide dédié) expliquant comment utiliser la nouvelle fonctionnalité du point de vue de l'utilisateur final.
+- [ ] **Document de Plan :** Référencer ce document de plan d'implémentation depuis les commentaires de code pertinents ou d'autres documentations.

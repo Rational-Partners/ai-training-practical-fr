@@ -6,16 +6,16 @@ import { Button } from "react-bootstrap";
 
 const Page404 = () => (
   <React.Fragment>
-    <Helmet title="404 Error" />
+    <Helmet title="Erreur 404" />
     <div className="text-center">
       <h1 className="display-1 fw-bold">404</h1>
-      <p className="h2">Page not found.</p>
+      <p className="h2">Page non trouvée.</p>
       <p className="lead fw-normal mt-3 mb-4">
-        The page you are looking for might have been removed.
+        La page que vous recherchez a peut-être été supprimée.
       </p>
       <Link to="/dashboard/default">
         <Button variant="primary" size="lg">
-          Return to website
+          Retourner au site
         </Button>
       </Link>
     </div>

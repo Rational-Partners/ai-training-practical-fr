@@ -16,7 +16,7 @@ const ProtectedPage = () => {
           onClose={() => setShow(false)}
         >
           <div className="alert-message">
-            This page is only visible by authenticated users.
+            Cette page n'est visible que par les utilisateurs authentifiés.
           </div>
         </Alert>
       )}

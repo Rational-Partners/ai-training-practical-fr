@@ -4,15 +4,15 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 
 const Blank = () => (
   <React.Fragment>
-    <Helmet title="Blank Page" />
+    <Helmet title="Page Vierge" />
     <Container fluid className="p-0">
-      <h1 className="h3 mb-3">Blank Page</h1>
+      <h1 className="h3 mb-3">Page Vierge</h1>
 
       <Row>
         <Col>
           <Card>
             <Card.Header>
-              <Card.Title className="mb-0">Empty card</Card.Title>
+              <Card.Title className="mb-0">Carte vide</Card.Title>
             </Card.Header>
             <Card.Body>&nbsp;</Card.Body>
           </Card>

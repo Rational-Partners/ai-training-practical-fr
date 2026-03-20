@@ -2,50 +2,50 @@ import { body, param, validationResult } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 import { TaskStatus, TaskPriority } from '@prisma/client';
 
-// Validation rules for creating a task
+// Règles de validation pour la création d'une tâche
 export const createTaskValidationRules = [
-  body('name').notEmpty().withMessage('Task name is required').trim().escape(),
+  body('name').notEmpty().withMessage('Le nom de la tâche est requis').trim().escape(),
   body('description').optional().trim().escape(),
   body('status')
     .optional()
     .isIn(Object.values(TaskStatus))
-    .withMessage('Invalid task status'),
+    .withMessage('Statut de tâche invalide'),
   body('priority')
     .optional()
     .isIn(Object.values(TaskPriority))
-    .withMessage('Invalid task priority'),
+    .withMessage('Priorité de tâche invalide'),
 ];
 
-// Validation rules for updating a task
+// Règles de validation pour la mise à jour d'une tâche
 export const updateTaskValidationRules = [
-  // ID validation is usually handled in the route/controller, but can be added here if needed
-  // param('id').isUUID().withMessage('Invalid task ID format'), 
-  body('name').optional().notEmpty().withMessage('Task name cannot be empty').trim().escape(),
-  body('description').optional({ checkFalsy: true }).trim().escape(), // Allow empty string
+  // La validation de l'ID est généralement gérée dans la route/le contrôleur, mais peut être ajoutée ici si nécessaire
+  // param('id').isUUID().withMessage('Format d\'ID de tâche invalide'),
+  body('name').optional().notEmpty().withMessage('Le nom de la tâche ne peut pas être vide').trim().escape(),
+  body('description').optional({ checkFalsy: true }).trim().escape(), // Autoriser la chaîne vide
   body('status')
     .optional()
     .isIn(Object.values(TaskStatus))
-    .withMessage('Invalid task status'),
+    .withMessage('Statut de tâche invalide'),
   body('priority')
     .optional()
     .isIn(Object.values(TaskPriority))
-    .withMessage('Invalid task priority'),
+    .withMessage('Priorité de tâche invalide'),
 ];
 
-// Optional: Validation for just the ID parameter if needed separately
+// Optionnel : Validation pour uniquement le paramètre ID si nécessaire séparément
 export const taskIdValidationRules = [
-    param('id').isUUID().withMessage('Invalid task ID format'),
+    param('id').isUUID().withMessage('Format d\'ID de tâche invalide'),
 ];
 
 /**
- * Middleware to handle validation errors from express-validator.
+ * Middleware pour gérer les erreurs de validation de express-validator.
  */
 export const validate = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     return next();
   }
-  // Format errors for a more helpful response
+  // Formater les erreurs pour une réponse plus utile
   const extractedErrors = errors.array().map(err => ({ [err.type === 'field' ? err.path : 'general']: err.msg }));
 
   return res.status(422).json({
