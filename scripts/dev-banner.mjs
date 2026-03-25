@@ -2,7 +2,7 @@ import http from 'node:http';
 import os from 'node:os';
 
 const BACKEND_PORT = process.env.BACKEND_PORT || '5001';
-const FRONTEND_PORT = process.env.FRONTEND_PORT || '5000';
+const FRONTEND_PORT = process.env.FRONTEND_PORT || '5173';
 const POLL_INTERVAL = 500;
 const TIMEOUT = 30_000;
 

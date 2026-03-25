@@ -11,7 +11,7 @@ Vous devez avoir Node.js installé, téléchargeable sur [https://nodejs.org/](h
 ### `npm start`
 
 Lance l'application en mode développement.
-Ouvrez [http://localhost:3000](http://localhost:3000) pour la visualiser dans le navigateur.
+Ouvrez [http://localhost:5173](http://localhost:5173) pour la visualiser dans le navigateur.
 
 La page se rechargera si vous effectuez des modifications.
 Vous verrez également les erreurs de lint dans la console.

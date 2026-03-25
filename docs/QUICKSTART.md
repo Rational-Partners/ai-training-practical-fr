@@ -51,7 +51,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
         ```dotenv
         # backend/.env
         DATABASE_URL="file:./dev.db"
-        BACKEND_PORT=3001
+        BACKEND_PORT=5001
         ```
 
 4.  **Vérifier l'environnement frontend (`frontend/.env.development` & `frontend/.env.production`) :**
@@ -60,7 +60,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
     *   Vérifiez les variables de développement dans `.env.development`. **Assurez-vous que toutes les variables sont préfixées par `VITE_`** pour les exposer au frontend Vite. Au minimum, vérifiez l'URL de base de l'API :
         ```dotenv
         # frontend/.env.development
-        VITE_API_BASE_URL=http://localhost:3001/api
+        VITE_API_BASE_URL=http://localhost:5001/api
 
         # Vérifiez les autres variables VITE_ requises par le template frontend (par ex., clés Firebase, Auth0)
         # VITE_FIREBASE_API_KEY=...
@@ -83,8 +83,8 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
     ```bash
     npm run dev
     ```
-    *   Le backend sera généralement accessible sur `http://localhost:3001` (ou le `BACKEND_PORT` que vous avez défini).
-    *   Le frontend sera généralement accessible sur `http://localhost:3000` (ou le port défini dans le script `dev` de `frontend/package.json`) et devrait s'ouvrir automatiquement dans votre navigateur.
+    *   Le backend sera généralement accessible sur `http://localhost:5001` (ou le `BACKEND_PORT` que vous avez défini).
+    *   Le frontend sera généralement accessible sur `http://localhost:5173` (ou le `FRONTEND_PORT` que vous avez défini).
 
 *   **Linting et Formatage :**
     Pour vérifier les problèmes de style de code et formater le code dans l'ensemble du projet, exécutez ces commandes depuis le répertoire **racine** :
